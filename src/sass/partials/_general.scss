@@ -1,0 +1,42 @@
+$font-primary: 'Roboto';
+$font-secondary: 'Inter', sans-serif;
+
+$main-text-color: #000000;
+$second-text-color:#FFFFFF;
+$third-text-color: #FF6B08;
+
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #000000;
+  &:link,
+  &:hover {
+    text-decoration: none;
+  }
+}
