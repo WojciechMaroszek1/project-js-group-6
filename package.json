@@ -2,7 +2,7 @@
   "name": "project-js-group-6",
   "version": "1.1.0",
   "description": "",
-  "homepage": "https://WojciechMaroszek1.com/migace/project-js-group-6",
+  "homepage": "https://wojciechmaroszek1.github.io/project-js-group-6/",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url project-js-group-6"
