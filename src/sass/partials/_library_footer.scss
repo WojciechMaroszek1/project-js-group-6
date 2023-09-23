@@ -1,1 +1,32 @@
-@import './general'
+@import './general';
+.footer {
+    font-family: $font-primary ;
+    background-color: #F7F7F7;
+    color: #545454;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    @media (max-width: 320px) {height: 100px;} 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 29px;
+}
+
+.footer-content {
+    font-size: 16px;
+    line-height: 1.18;
+    font-weight: 400;
+    display: inline-block;
+    align-items: center;
+    padding: 30px 0;
+    
+    @media (max-width: 320px) {
+                   font-size: 14px;
+        }
+    }
+
