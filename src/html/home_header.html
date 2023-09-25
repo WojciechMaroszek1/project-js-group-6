@@ -1,25 +1,31 @@
 <header class="header">
-    <img class="header_background-img" 
-    src="/src/images/home_phone@x1.jpg" 
-    alt="Background image with abstract theme"
-    srcset="/src/images/home_phone@x1.jpg 320w,
-    /src/images/home_tablet@x2.jpg 768w,
-    /src/images/home_desktop@x3.jpg 1280w"
-    sizes="(min-width:1280px) 1280px, (min-width:768px) 768px, (min-width: 320px) 320px, 100vw">
+<img src="/src/images/home_background.jpg" alt="Background with abstract theme"
+srcset="/src/images/home_background.jpg 230w,
+        /src/images/home_background_phone@2x.jpg 320w,
+        /src/images/home_background@2x.jpg 640w,
+        /src/images/home_background@3x.jpg 960w,
+        /src/images/home_background@4x.jpg 1280w"
+        sizes="(min-width:1280px) 1280px, (min-width:960px) 960px, (min-width:640px) 640px, (min-width:320px) 320px,
+        (min-width:230px) 230px, 100vw">
+
     <div class="header_container">
-        <a class="header_logo-film" href="#">
-            <svg class="header_icon" width="24" height="24">
-                <use href="/src/images/film.svg"></use>
+        <a class="header_logo-film" href="/src/html/home_main.html">
+            <svg class="header_icons">
+                <use href="/src/images/icons.svg#icon-film">
+                    <symbol id="icon-film" viewBox="0 0 32 32"></symbol>
+                </use>
             </svg>
             Filmoteka
         </a>
-        <a href="#">home</a>
-        <a href="#">my library</a>
+        <a href="/src/html/home_main.html">home</a>
+        <a href="/src/html/library_main.html">my library</a>
         <form>
             <input type="search" name="name" id="header_input" placeholder="Movie search">
             <button type="button">
-                <svg class="header_icon" width="12" height="12">
-                    <use href="/src/images/search.svg"></use>
+                <svg class="header_icons">
+                    <use href="/src/images/icons.svg#icon-search">
+                        <symbol id="icon-search" viewBox="0 0 32 32"></symbol>
+                    </use>
                 </svg>
                 </button>
         </form>
