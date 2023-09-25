@@ -5,7 +5,7 @@
   "homepage": "https://wojciechmaroszek1.github.io/project-js-group-6/",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url project-js-group-6"
+    "build": "parcel build src/*.html --public-url /project-js-group-6/"
   },
   "repository": {
     "type": "git",
