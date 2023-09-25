@@ -68,3 +68,50 @@
     color: $third-text-color;
   }
 }
+
+.pages {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 60px;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: $main-text-color;
+    transition: background-color 200ms linear, color 200ms linear;
+
+    &:hover,
+    &:focus {
+      background-color: $third-text-color;
+      color: $second-text-color;
+    }
+
+    &--active {
+      background-color: $third-text-color;
+      color: $second-text-color;
+    }
+
+    &--controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f7f7f7;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: $main-text-color;
+  }
+}
