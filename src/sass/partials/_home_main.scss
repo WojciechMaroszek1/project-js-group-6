@@ -23,6 +23,12 @@
 .card {
   font-family: $font-primary;
   font-weight: 500;
+  transition: transform 0.3s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.02);
+  }
 
   &__img {
     width: 280px;
