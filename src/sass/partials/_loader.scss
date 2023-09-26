@@ -1,0 +1,25 @@
+@import './general';
+
+.loader {
+  border: 4px solid rgba(242, 234, 234, 0.461);
+  border-top: 4px solid $third-text-color;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 3s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
