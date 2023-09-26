@@ -1,33 +1,22 @@
 <header class="header">
-<img src="/src/images/home_background.jpg" alt="Background with abstract theme"
-srcset="/src/images/home_background.jpg 230w,
-        /src/images/home_background_phone@2x.jpg 320w,
-        /src/images/home_background@2x.jpg 640w,
-        /src/images/home_background@3x.jpg 960w,
-        /src/images/home_background@4x.jpg 1280w"
-        sizes="(min-width:1280px) 1280px, (min-width:960px) 960px, (min-width:640px) 640px, (min-width:320px) 320px,
-        (min-width:230px) 230px, 100vw">
-
     <div class="header_container">
-        <a class="header_logo-film" href="/src/html/home_main.html">
-            <svg class="header_icons">
-                <use href="/src/images/icons.svg#icon-film">
-                    <symbol id="icon-film" viewBox="0 0 32 32"></symbol>
-                </use>
+        <div class="header_img">
+        <a class="header_main-link" href="/src/html/home_main.html">
+            <svg class="header_icon-main">
+                <use href="/src/images/icons.svg#icon-film"></use>
             </svg>
             Filmoteka
         </a>
-        <a href="/src/html/home_main.html">home</a>
-        <a href="/src/html/library_main.html">my library</a>
+        <a class="header_links" href="/src/html/home_main.html">home</a>
+        <a class="header_links" href="/src/html/library_main.html">my library</a>
         <form>
             <input type="search" name="name" id="header_input" placeholder="Movie search">
-            <button type="button">
-                <svg class="header_icons">
-                    <use href="/src/images/icons.svg#icon-search">
-                        <symbol id="icon-search" viewBox="0 0 32 32"></symbol>
-                    </use>
+            <button class="header_button" type="button">
+                <svg class="header_button_icon">
+                    <use href="/src/images/icons.svg#icon-search" x="0" y="0"></use>
                 </svg>
                 </button>
         </form>
+    </div>
     </div>
 </header>

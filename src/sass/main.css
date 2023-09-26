@@ -1,0 +1,362 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.header {
+  position: relative;
+  height: 230px;
+}
+.header_container {
+  height: 230px;
+}
+.header_icon-main {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #FFFFFF;
+  visibility: visible;
+  margin-left: 20px;
+  margin-top: 40px;
+}
+.header_links {
+  font-family: "Roboto";
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: 12px;
+  gap: 40px;
+  margin-right: 20px;
+  margin-top: 40px;
+}
+.header_main-link {
+  visibility: hidden;
+}
+.header_button {
+  width: 12px;
+  height: 12px;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+.header_button_icon {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: #FFFFFF;
+  left: 20px;
+}
+.header_img {
+  background-image: url("/src/images/home_background.jpg");
+  background-size: cover;
+  height: 230px;
+}
+@media screen and (min-width: 320px) and (max-width: 460px) {
+  .header_img {
+    background-image: url("/src/images/home_background_phone@2x.jpg");
+  }
+}
+@media screen and (min-width: 460px) and (max-width: 768px) {
+  .header_img {
+    background-image: url("/src/images/home_background_phone@3x.jpg");
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .header_img {
+    background-image: url("/src/images/home_background@2x.jpg");
+    background-size: cover;
+    height: 216px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header_img {
+    background-image: url("/src/images/home_background@4x.jpg");
+    background-size: cover;
+    height: 216px;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+}
+a:link, a:hover {
+  text-decoration: none;
+}
+
+body {
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}/*# sourceMappingURL=main.css.map */
