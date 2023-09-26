@@ -1,1 +1,79 @@
-@import './general'
+@import './general';
+
+//mobile
+    .header {
+        position: relative;
+        height: 230px;
+
+        &_container {
+            height: 230px;
+        }
+        &_icon-main {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: $second-text-color;
+            visibility: visible;
+            margin-left: 20px;
+            margin-top: 40px;
+        }
+        &_links {
+            font-family: $font-primary;
+            color: $second-text-color;
+            text-transform: uppercase;
+            font-size: 12px;
+            gap: 40px;
+            margin-right: 20px;
+            margin-top: 40px;
+        }
+        &_main-link {
+            visibility: hidden;
+        }
+        &_button {
+            width: 12px;
+            height: 12px;
+            justify-content: center;
+            background-color: transparent;
+            cursor: pointer;
+            border: none;
+
+            &_icon {
+                width: 12px;
+                height: 12px;
+                fill: none;
+                stroke: $second-text-color;
+                left: 20px;
+            }
+        }
+        &_img {
+            background-image: url('/src/images/home_background.jpg');
+            background-size: cover;
+            height: 230px;
+
+            @media screen and (min-width:320px) and (max-width:460px){
+                background-image: url('/src/images/home_background_phone@2x.jpg');
+            }
+            @media screen and (min-width:460px) and (max-width:768px){
+                background-image: url('/src/images/home_background_phone@3x.jpg');
+            }
+        }
+
+//tablet
+@media screen and (min-width:768px) and (max-width:1280px){
+    &_img {
+        background-image: url('/src/images/home_background@2x.jpg');
+        background-size: cover;
+        height: 216px;
+
+    }
+}
+
+//desktop
+@media screen and (min-width:1280px) {
+    &_img {
+        background-image: url('/src/images/home_background@4x.jpg');
+        background-size: cover;
+        height: 216px;
+    }
+}
+    }
