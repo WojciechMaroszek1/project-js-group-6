@@ -1,206 +1,206 @@
-.overlay-auth {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1001;
+// .overlay-auth {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     z-index: 1001;
 
-    background-color: #000c;
+//     background-color: #000c;
 
-    @include media(480px, max-width) {
-        padding-left: 30px;
-    }
-}
+//     @include media(480px, max-width) {
+//         padding-left: 30px;
+//     }
+// }
 
-.modal-auth {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: min-content;
-    max-width: 360px;
-    padding: 60px 30px;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
+// .modal-auth {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     min-width: min-content;
+//     max-width: 360px;
+//     padding: 60px 30px;
+//     transform: translate(-50%, -50%);
+//     z-index: 1001;
 
-    background-color: var(--header-text-color);
+//     background-color: var(--header-text-color);
 
-    @include media(768px, min-width) {
-        max-width: 450px;
-        min-width: 450px;
-        width: 500px;
-        height: 520px;
-    }
-}
+//     @include media(768px, min-width) {
+//         max-width: 450px;
+//         min-width: 450px;
+//         width: 500px;
+//         height: 520px;
+//     }
+// }
 
-.modal-auth__container {
-    width: 240px;
-    margin: 0 auto;
+// .modal-auth__container {
+//     width: 240px;
+//     margin: 0 auto;
 
-    @include media(768px, min-width) {
-        width: 336px;
-    }
-}
+//     @include media(768px, min-width) {
+//         width: 336px;
+//     }
+// }
 
-.modal-auth__btn-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 30px;
-    height: 30px;
-}
+// .modal-auth__btn-close {
+//     position: absolute;
+//     top: 16px;
+//     right: 16px;
+//     width: 30px;
+//     height: 30px;
+// }
 
-.icon {
-    stroke: var(--gallery-text-color);
-}
+// .icon {
+//     stroke: var(--gallery-text-color);
+// }
 
-.modal-auth__btn-close:hover .icon,
-.modal-auth__btn-close:focus .icon {
-    stroke: var(--accent-text-color);
-}
+// .modal-auth__btn-close:hover .icon,
+// .modal-auth__btn-close:focus .icon {
+//     stroke: var(--accent-text-color);
+// }
 
-.modal-auth__head {
-    position: relative;
-    display: flex;
-    align-items: baseline;
+// .modal-auth__head {
+//     position: relative;
+//     display: flex;
+//     align-items: baseline;
 
-    &::after {
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        content: '';
-        width: 100%;
-        height: 3px;
-        background-color: var(--error-text-color);
-    }
-}
+//     &::after {
+//         position: absolute;
+//         bottom: -8px;
+//         left: 0;
+//         content: '';
+//         width: 100%;
+//         height: 3px;
+//         background-color: var(--error-text-color);
+//     }
+// }
 
-.modal-auth__title {
-    margin-right: 20px;
-    font-family: 'Roboto', sans-serif;
-    @include font(500, 20px, 1.15, null, uppercase);
+// .modal-auth__title {
+//     margin-right: 20px;
+//     font-family: 'Roboto', sans-serif;
+//     @include font(500, 20px, 1.15, null, uppercase);
 
-    color: var(--gallery-text-color);
-}
+//     color: var(--gallery-text-color);
+// }
 
-.modal-auth__button {
-    @include font(500, 12px, 1.17, null, uppercase);
-    font-family: 'Roboto', sans-serif;
+// .modal-auth__button {
+//     @include font(500, 12px, 1.17, null, uppercase);
+//     font-family: 'Roboto', sans-serif;
 
-    color: var(--accent-text-color);
-    transform: scale(1);
-    transition: transform 0.5s linear;
+//     color: var(--accent-text-color);
+//     transform: scale(1);
+//     transition: transform 0.5s linear;
 
-    &:hover,
-    &:focus {
-        transform: scale(1.1);
-    }
+//     &:hover,
+//     &:focus {
+//         transform: scale(1.1);
+//     }
 
-    &:active {
-        transform: scale(1);
-    }
-}
+//     &:active {
+//         transform: scale(1);
+//     }
+// }
 
-.auth-form {
-    margin-top: 46px;
-}
+// .auth-form {
+//     margin-top: 46px;
+// }
 
-.auth-form__input {
-    width: 100%;
-    margin-bottom: 25px;
-    padding: 11 12 11 12;
-    border: 1px solid var(--category-text-color);
-    border-radius: 5px;
+// .auth-form__input {
+//     width: 100%;
+//     margin-bottom: 25px;
+//     padding: 11 12 11 12;
+//     border: 1px solid var(--category-text-color);
+//     border-radius: 5px;
 
-    @include media(768px, min-width) {
-        width: 100%;
-    }
+//     @include media(768px, min-width) {
+//         width: 100%;
+//     }
 
-    &:focus {
-        outline: 2px solid var(--accent-text-color);
-    }
-}
+//     &:focus {
+//         outline: 2px solid var(--accent-text-color);
+//     }
+// }
 
-.auth-form__input--email::placeholder,
-.auth-form__input--password::placeholder {
-    color: var(--accent-text-color);
-}
+// .auth-form__input--email::placeholder,
+// .auth-form__input--password::placeholder {
+//     color: var(--accent-text-color);
+// }
 
-.auth-form__text {
-    margin-bottom: 10px;
-    text-align: center;
+// .auth-form__text {
+//     margin-bottom: 10px;
+//     text-align: center;
 
-    @include font(500, 12px, 1.6, null, null);
-    font-family: 'Roboto', sans-serif;
+//     @include font(500, 12px, 1.6, null, null);
+//     font-family: 'Roboto', sans-serif;
 
-    color: var(--category-text-color);
-}
+//     color: var(--category-text-color);
+// }
 
-.auth-form__sign-text {
-    color: var(--category-text-color);
-    @include font(500, 16px, 1.6, null, null);
-}
+// .auth-form__sign-text {
+//     color: var(--category-text-color);
+//     @include font(500, 16px, 1.6, null, null);
+// }
 
-.auth-form__button {
-    display: block;
-    width: 100%;
+// .auth-form__button {
+//     display: block;
+//     width: 100%;
 
-    margin-bottom: 28px;
-    padding-top: 14px;
-    padding-bottom: 14px;
+//     margin-bottom: 28px;
+//     padding-top: 14px;
+//     padding-bottom: 14px;
 
-    border-radius: 5px;
-    background-color: var(--accent-text-color);
-    color: var(--header-text-color);
+//     border-radius: 5px;
+//     background-color: var(--accent-text-color);
+//     color: var(--header-text-color);
 
-    @include font(500, 20px, 1, null, uppercase);
-    font-family: inherit;
+//     @include font(500, 20px, 1, null, uppercase);
+//     font-family: inherit;
 
-    @include media(768px) {
-        height: 60px;
-    }
-}
+//     @include media(768px) {
+//         height: 60px;
+//     }
+// }
 
-.auth-form__button-google {
-    width: 70px;
-    height: 70px;
-    padding: 10px;
-    margin-left: 20px;
+// .auth-form__button-google {
+//     width: 70px;
+//     height: 70px;
+//     padding: 10px;
+//     margin-left: 20px;
 
-    border: 1px solid var(--category-text-color);
-    border-radius: 5px;
-    transform: scale(1);
-    transition: transform 0.5s linear;
+//     border: 1px solid var(--category-text-color);
+//     border-radius: 5px;
+//     transform: scale(1);
+//     transition: transform 0.5s linear;
 
-    &:hover,
-    &:focus {
-        border-color: var(--accent-text-color);
-        transform: scale(1.1);
-    }
-}
+//     &:hover,
+//     &:focus {
+//         border-color: var(--accent-text-color);
+//         transform: scale(1.1);
+//     }
+// }
 
-.google-icon {
-    width: 100%;
-    height: 100%;
-}
+// .google-icon {
+//     width: 100%;
+//     height: 100%;
+// }
 
-.auth-form__link {
-    @include font(500, 12px, 1.67, null, null);
-    font-family: 'Roboto', sans-serif;
-    color: var(--accent-text-color);
+// .auth-form__link {
+//     @include font(500, 12px, 1.67, null, null);
+//     font-family: 'Roboto', sans-serif;
+//     color: var(--accent-text-color);
 
-    &:hover,
-    &:focus {
-        color: var(--gallery-text-color);
-    }
-}
+//     &:hover,
+//     &:focus {
+//         color: var(--gallery-text-color);
+//     }
+// }
 
-.auth-form__autorization {
-    @include centeredFlex;
-}
+// .auth-form__autorization {
+//     @include centeredFlex;
+// }
 
-.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
+// .is-hidden {
+//     opacity: 0;
+//     visibility: hidden;
+//     pointer-events: none;
+// }
