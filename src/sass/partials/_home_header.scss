@@ -1,79 +1,218 @@
 @import './general';
 
 //mobile
-    .header {
-        position: relative;
-        height: 230px;
+.header {
+    position: relative;
+    height: 230px;
+    margin: 0;
+    padding: 0;
 
-        &_container {
-            height: 230px;
+    &_container {
+        height: 230px;
+    }
+    &_icon-main {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: $second-text-color;
+        visibility: visible;
+        margin-left: 20px;
+        margin-top: 40px;
+
+        &:hover,
+        &:focus {
+            stroke: $third-text-color;
+            transition: 0.4s;
         }
-        &_icon-main {
-            width: 24px;
-            height: 24px;
-            fill: none;
-            stroke: $second-text-color;
-            visibility: visible;
-            margin-left: 20px;
-            margin-top: 40px;
+    }
+
+    &_links-container {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        width: 144px;
+        float: right;
+        margin-right: 20px;
+        margin-top: 45px;
+    }
+
+    &_links {
+        font-family: $font-primary;
+        color: $second-text-color;
+        text-transform: uppercase;
+        font-size: 12px;
+        text-align: right;
+
+        &:hover,
+        &:focus {
+            color: $third-text-color;
+            transition: 0.4s;
         }
-        &_links {
-            font-family: $font-primary;
-            color: $second-text-color;
-            text-transform: uppercase;
-            font-size: 12px;
-            gap: 40px;
-            margin-right: 20px;
-            margin-top: 40px;
+    }
+    &_current-link {
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 36px;
+            height: 3px;
+            border-radius: 2px;
+            background-color: #FF001B;
+            top: 60px;
+            cursor: default;
         }
-        &_main-link {
-            visibility: hidden;
-        }
-        &_button {
+    }
+    &_main-link {
+        visibility: hidden;
+    }
+    &_button {
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        position: relative;
+        margin-top: 60px;
+        margin-left: 260px;
+
+        &_icon {
             width: 12px;
             height: 12px;
-            justify-content: center;
-            background-color: transparent;
-            cursor: pointer;
-            border: none;
+            fill: none;
+            stroke: $second-text-color;
+            left: 20px;
 
-            &_icon {
-                width: 12px;
-                height: 12px;
-                fill: none;
-                stroke: $second-text-color;
-                left: 20px;
+            &:hover,
+            &:focus {
+                stroke: $third-text-color;
+                transition: 0.4s;
             }
         }
-        &_img {
-            background-image: url('/src/images/home_background.jpg');
-            background-size: cover;
-            height: 230px;
+    }
+    &_form {
+        position: relative;
+        width: 280px;
+        height: 20px;
+        margin: auto;
+    }
+    &_input {
+        position: absolute;
+        margin-top: 60px;
+        color: white;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $second-text-color;
+        width: 280px;
 
-            @media screen and (min-width:320px) and (max-width:460px){
-                background-image: url('/src/images/home_background_phone@2x.jpg');
-            }
-            @media screen and (min-width:460px) and (max-width:768px){
-                background-image: url('/src/images/home_background_phone@3x.jpg');
-            }
+        &:hover,
+        &:focus {
+            color: $third-text-color;
+            transition: 0.4s;
+            border-bottom: 1px solid $third-text-color;
+            outline: none;
         }
+    }
+    &_error {
+        text-align: center;
+        color: #FF001B;
+        font-size: 14;
+        font-family: $font-primary;
+        padding-top: 10px;
+        visibility: hidden;
+    }
+    &_img {
+        background-image: url('/src/images/home_background.jpg');
+        background-size: cover;
+        height: 230px;
+    }
 
 //tablet
-@media screen and (min-width:768px) and (max-width:1280px){
-    &_img {
-        background-image: url('/src/images/home_background@2x.jpg');
-        background-size: cover;
-        height: 216px;
+@media screen and (min-width:$breakpoint-tablet) and (max-width:$breakpoint-desktop){
 
+height: 216px;
+justify-content: space-between;
+
+&_icon-main {
+    margin-left: 31px;
+    &:hover,
+    &:focus {
+        stroke: $second-text-color;
+        transition: 0.4s;
     }
+}
+&_main-link {
+    visibility: visible;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: $font-primary;
+    color: $second-text-color;
+    
+    &:hover,
+    &:focus {
+        color: $third-text-color;
+        transition: 0.4s;
+        stroke: $third-text-color;
+    }
+}
+&_links-container {
+    margin-right: 32px
+}
+&_form {
+    width: 360px;
+}
+&_input {
+    width: 360px;
+}
+&_button {
+    margin-left: 340px;
+}
+&_img {
+    background-image: url('/src/images/home_background@2x.jpg');
+    background-size: cover;
+    height: 216px;
+}
 }
 
 //desktop
-@media screen and (min-width:1280px) {
-    &_img {
-        background-image: url('/src/images/home_background@4x.jpg');
-        background-size: cover;
-        height: 216px;
+@media screen and (min-width:$breakpoint-desktop) {
+&_icon-main {
+    margin-left: 31px;
+    &:hover,
+    &:focus {
+        stroke: $second-text-color;
+        transition: 0.4s;
     }
 }
+
+&_main-link {
+    visibility: visible;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: $font-primary;
+    color: $second-text-color;
+    
+    &:hover,
+    &:focus {
+        color: $third-text-color;
+        transition: 0.4s;
     }
+}
+&_links-container {
+    margin-right: 32px
+}
+&_form {
+    width: 394px;
+}
+&_input {
+    width: 394px;
+}
+&_button {
+    margin-left: 375px;
+}
+&_img {
+    background-image: url('/src/images/home_background@4x.jpg');
+    background-size: cover;
+    height: 216px;
+}
+}
+}
