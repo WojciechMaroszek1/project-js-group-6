@@ -1,9 +1,14 @@
-const loader = document.createElement('div');
+function addLoader() {
+  const loader = document.createElement('div');
+  loader.classList.add('loader');
+  document.body.appendChild(loader);
+}
 
-function showLoader() {
+export function showLoader() {
+  addLoader();
   loader.style.display = 'block';
 }
 
-function hideLoader() {
+export function hideLoader() {
   loader.style.display = 'none';
 }

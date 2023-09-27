@@ -1,0 +1,47 @@
+@import './general';
+.footer {
+    font-family: $font-primary ;
+    background-color: #F7F7F7;
+    color: #545454;
+    text-align: center;
+    
+    width: 100%;
+    @media (max-width: 320px) {height: 100px;} 
+
+
+  //  @media  (min-width:320px) and (max-width:460px)
+&-content {
+    font-size: 16px;
+    line-height: 1.18;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+
+    @media(max-width:460px)
+    {font-size: 16px;
+        display: inline-block;}
+    
+    @media (max-width: 320px) {
+                   font-size: 14px;
+                   display: inline-block; 
+        }
+    }
+&_icon-heart{
+    width: 14px;
+    height: 12.88px;
+    fill: $third-text-color;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+&-text-position{
+    @media(max-width:460px){
+        margin-bottom: 10px;
+    }
+    @media (max-width: 320px){
+    margin-bottom: 10px;
+}
+}
+}
