@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { showLoader, hideLoader } from './loader';
-
 const movieCard = document.getElementsByClassName('.card');
 const moviePoster = document.getElementsByClassName('.card_img');
 const searchQuery = 'Lord of the Rings';
@@ -35,6 +34,7 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
 const searchFilm = async () => {
   return await axios
     .request(options)

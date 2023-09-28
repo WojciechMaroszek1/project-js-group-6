@@ -1,19 +1,20 @@
+// @import './general';
 // @mixin media($width, $property: min-width) {
-//     @media screen and ($property: $width) {
-//         @content;
-//     }
+//   @media screen and ($property: $width) {
+//     @content;
+//   }
 // }
 
 // @mixin font($fw, $fs, $lh, $ls, $tt) {
-//     font-weight: $fw;
-//     font-size: $fs;
-//     line-height: $lh;
-//     letter-spacing: $ls;
-//     text-transform: $tt;
+//   font-weight: $fw;
+//   font-size: $fs;
+//   line-height: $lh;
+//   letter-spacing: $ls;
+//   text-transform: $tt;
 // }
 
 // @mixin centeredFlex {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 // }
