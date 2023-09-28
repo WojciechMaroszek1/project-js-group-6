@@ -1,16 +1,17 @@
    
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("header_form"); // Popraw selektor
-      const movieList = document.querySelector('.movies'); // Dodaj selektor listy filmów
+ document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("header_form"); 
+  const movieList = document.querySelector('.movies'); 
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const searchInput = document.getElementById("header_input").value; 
+
     
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const searchInput = document.getElementById("header_form").value;
-        
-        // Tutaj wywołujemy funkcję, która będzie wyszukiwać filmy w API na podstawie wpisanego tytułu
-        searchMovies(searchInput, movieList); // Przekazujemy również element listy filmów
-      });
-    });
+    searchMovies(searchInput, movieList); 
+  });
+});
+
     
     async function searchMovies(query, movieList) {
       const apiKey ="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ"; // Zastąp swoim kluczem API
@@ -23,7 +24,7 @@
         },
       };
     
-      const apiUrl = `${baseUrl}/search/movie?query=${query}`; // Poprawny adres URL
+      const apiUrl = `${baseUrl}/search/movie?query=${query}`; 
     
       try {
         const response = await fetch(apiUrl, options);
@@ -38,7 +39,7 @@
     }
     
     function renderMovies(data, movieList) {
-      movieList.innerHTML = ""; // Wyczyść poprzednie wyniki
+      movieList.innerHTML = ""; 
     
       const movieListContent = data
         .map(e => {
