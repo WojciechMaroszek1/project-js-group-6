@@ -1,5 +1,7 @@
+let loader;
+
 function addLoader() {
-  const loader = document.createElement('div');
+  loader = document.createElement('div');
   loader.classList.add('loader');
   document.body.appendChild(loader);
 }

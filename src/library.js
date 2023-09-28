@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
-
+import { showLoader, hideLoader } from './loader';
 const movieCard = document.getElementsByClassName('.card');
 const moviePoster = document.getElementsByClassName('.card_img');
 const searchQuery = 'Lord of the Rings';
@@ -20,6 +20,20 @@ const options = {
       'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ',
   },
 };
+axios.interceptors.request.use(config => {
+  showLoader();
+  return config;
+});
+axios.interceptors.response.use(
+  response => {
+    hideLoader();
+    return response;
+  },
+  error => {
+    hideLoader();
+    return Promise.reject(error);
+  },
+);
 
 const searchFilm = async () => {
   return await axios
