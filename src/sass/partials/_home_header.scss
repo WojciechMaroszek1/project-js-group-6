@@ -2,217 +2,158 @@
 
 //mobile
 .header {
-    position: relative;
-    height: 230px;
-    margin: 0;
-    padding: 0;
+  background-image: url('/src/images/home_background.jpg');
+  background-size: cover;
+  padding: 40px 20px 44px 20px;
 
-    &_container {
-        height: 230px;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 54px;
+  }
+  &__icon-main {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: $second-text-color;
+    visibility: visible;
+  }
+  &__logo:hover > svg *,
+  &__logo:hover &__main-link,
+  &__logo:hover {
+    stroke: $third-text-color;
+    transition: 0.4s;
+    color: $third-text-color;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+
+  &__links-container {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__links {
+    font-family: $font-primary;
+    color: $second-text-color;
+    font-size: 12px;
+
+    &:hover,
+    &:focus {
+      color: $third-text-color;
+      transition: 0.4s;
     }
-    &_icon-main {
-        width: 24px;
-        height: 24px;
-        fill: none;
-        stroke: $second-text-color;
+  }
+  &__current-link {
+    &::after {
+      content: '';
+      display: flex;
+      width: 34px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: #ff001b;
+    }
+  }
+  &__main-link {
+    visibility: hidden;
+  }
+
+  &__button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+  }
+  &__button-icon {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: $second-text-color;
+
+    &:hover,
+    &:focus {
+      stroke: $third-text-color;
+      transition: 0.4s;
+    }
+  }
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__input {
+    color: $second-text-color;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $second-text-color;
+    width: 280px;
+
+    &:hover,
+    &:focus {
+      color: $third-text-color;
+      transition: 0.4s;
+      border-bottom: 1px solid $third-text-color;
+      outline: none;
+    }
+  }
+  &__error {
+    visibility: hidden;
+    margin-top: 16px;
+    color: #ff001b;
+    font-size: 14;
+    font-family: $font-primary;
+  }
+
+  //tablet
+  @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    .header {
+      background-image: url('/src/images/home_background@2x.jpg');
+      background-size: cover;
+      padding: 40px 33px 45px 33px;
+
+      &__main-link {
         visibility: visible;
-        margin-left: 20px;
-        margin-top: 40px;
-
-        &:hover,
-        &:focus {
-            stroke: $third-text-color;
-            transition: 0.4s;
-        }
-    }
-
-    &_links-container {
-        display: flex;
-        flex-direction: row;
-        gap: 40px;
-        width: 144px;
-        float: right;
-        margin-right: 20px;
-        margin-top: 45px;
-    }
-
-    &_links {
+        font-size: 30px;
+        font-weight: 500;
         font-family: $font-primary;
         color: $second-text-color;
-        text-transform: uppercase;
-        font-size: 12px;
-        text-align: right;
-
-        &:hover,
-        &:focus {
-            color: $third-text-color;
-            transition: 0.4s;
-        }
-    }
-    &_current-link {
-        &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 36px;
-            height: 3px;
-            border-radius: 2px;
-            background-color: #FF001B;
-            top: 60px;
-            cursor: default;
-        }
-    }
-    &_main-link {
-        visibility: hidden;
-    }
-    &_button {
-        width: 20px;
-        height: 20px;
-        background-color: transparent;
-        cursor: pointer;
-        border: none;
-        position: relative;
-        margin-top: 60px;
-        margin-left: 260px;
-
-        &_icon {
-            width: 12px;
-            height: 12px;
-            fill: none;
-            stroke: $second-text-color;
-            left: 20px;
-
-            &:hover,
-            &:focus {
-                stroke: $third-text-color;
-                transition: 0.4s;
-            }
-        }
-    }
-    &_form {
-        position: relative;
-        width: 280px;
-        height: 20px;
-        margin: auto;
-    }
-    &_input {
-        position: absolute;
-        margin-top: 60px;
-        color: white;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid $second-text-color;
-        width: 280px;
-
-        &:hover,
-        &:focus {
-            color: $third-text-color;
-            transition: 0.4s;
-            border-bottom: 1px solid $third-text-color;
-            outline: none;
-        }
-    }
-    &_error {
+      }
+      &__form {
+        justify-content: center;
+      }
+      &__input {
+        width: 360px;
+      }
+      &__error {
         text-align: center;
-        color: #FF001B;
-        font-size: 14;
+      }
+    }
+  }
+
+  //desktop
+  @media screen and (min-width: $breakpoint-desktop) {
+    .header {
+      background-image: url('/src/images/home_background@4x.jpg');
+      background-size: cover;
+      padding: 40px 33px 45px 33px;
+
+      &__main-link {
+        visibility: visible;
+        font-size: 30px;
+        font-weight: 500;
         font-family: $font-primary;
-        padding-top: 10px;
-        visibility: hidden;
+        color: $second-text-color;
+      }
+      &__form {
+        justify-content: center;
+      }
+      &__input {
+        width: 394px;
+      }
+      &__error {
+        margin-top: 20px;
+        text-align: center;
+      }
     }
-    &_img {
-        background-image: url('/src/images/home_background.jpg');
-        background-size: cover;
-        height: 230px;
-    }
-
-//tablet
-@media screen and (min-width:$breakpoint-tablet) and (max-width:$breakpoint-desktop){
-
-height: 216px;
-justify-content: space-between;
-
-&_icon-main {
-    margin-left: 31px;
-    &:hover,
-    &:focus {
-        stroke: $second-text-color;
-        transition: 0.4s;
-    }
-}
-&_main-link {
-    visibility: visible;
-    font-size: 30px;
-    font-weight: 500;
-    font-family: $font-primary;
-    color: $second-text-color;
-    
-    &:hover,
-    &:focus {
-        color: $third-text-color;
-        transition: 0.4s;
-        stroke: $third-text-color;
-    }
-}
-&_links-container {
-    margin-right: 32px
-}
-&_form {
-    width: 360px;
-}
-&_input {
-    width: 360px;
-}
-&_button {
-    margin-left: 340px;
-}
-&_img {
-    background-image: url('/src/images/home_background@2x.jpg');
-    background-size: cover;
-    height: 216px;
-}
-}
-
-//desktop
-@media screen and (min-width:$breakpoint-desktop) {
-&_icon-main {
-    margin-left: 31px;
-    &:hover,
-    &:focus {
-        stroke: $second-text-color;
-        transition: 0.4s;
-    }
-}
-
-&_main-link {
-    visibility: visible;
-    font-size: 30px;
-    font-weight: 500;
-    font-family: $font-primary;
-    color: $second-text-color;
-    
-    &:hover,
-    &:focus {
-        color: $third-text-color;
-        transition: 0.4s;
-    }
-}
-&_links-container {
-    margin-right: 32px
-}
-&_form {
-    width: 394px;
-}
-&_input {
-    width: 394px;
-}
-&_button {
-    margin-left: 375px;
-}
-&_img {
-    background-image: url('/src/images/home_background@4x.jpg');
-    background-size: cover;
-    height: 216px;
-}
-}
+  }
 }

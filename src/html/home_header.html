@@ -1,32 +1,35 @@
 <section>
-    <header class="header">
-        <div class="header_container">
-            <div class="header_img">
-            
-            <a class="header_main-link" href="/src/index.html">
-                <svg class="header_icon-main">
-                    <use href="/src/images/icons.svg#icon-film"></use>
-                </svg>
-                Filmoteka
-            </a>
-           
-            <div class="header_links-container">
-            <a class="header_links header_current-link" href="/src/index.html">home</a>
-            <a class="header_links" href="/src/library.html">my library</a>
-        </div>
-            <form class="header_form" id="header_form">
-                <input class="header_input" type="text" name="name" id="header_input" placeholder="Movie search">
-                <button class="header_button" type="submit">
-                    <svg class="header_button_icon">
-                        <use href="/src/images/icons.svg#icon-search" x="-1" y="0"></use>
-                    </svg>
-                    </button>
-                    <p class="header_error">Search result not successful. Enter the correct movie name and try again.</p>
-                    </form>
-        </div>
-        </div>
-        </div>
-    </header>
-</section>
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo">
+        <svg class="header__icon-main">
+          <use href="/src/images/icons.svg#icon-film"></use>
+        </svg>
+        <a class="header__main-link" href="/src/index.html">Filmoteka</a>
+      </div>
 
-  
+      <div class="header__links-container">
+        <a class="header__links header__current-link" href="/src/index.html">HOME</a>
+        <a class="header__links" href="/src/library.html">MY LIBRARY</a>
+      </div>
+    </div>
+
+    <form class="header__form">
+      <input
+        class="header__input"
+        type="search"
+        name="name"
+        id="header__input"
+        placeholder="Movie search"
+      />
+      <button class="header__button" type="button">
+        <svg class="header__button-icon">
+          <use href="/src/images/icons.svg#icon-search" x="-1" y="0"></use>
+        </svg>
+      </button>
+    </form>
+    <div class="header__error">
+      <p>Search result not successful. Enter the correct movie name and try again.</p>
+    </div>
+  </header>
+</section>
