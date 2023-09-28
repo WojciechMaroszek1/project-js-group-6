@@ -13,7 +13,7 @@ table {
     overflow: scroll;
     background-color: var(--header-text-color);
 
-    @include media(768px) {
+    @media(max-width:768px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -22,7 +22,7 @@ table {
         overflow: hidden;
     }
 
-    @include media(1280px) {
+    @media(max-width:1280px) {
         width: 806px;
         height: 558px;
     }
@@ -34,12 +34,12 @@ table {
     &--padding {
         padding: 40 20 20 20;
 
-        @include media(768px) {
+        @media(width:768px) {
             padding: 40px 72px 40px 36px;
             display: flex;
         }
 
-        @include media(1280px) {
+        @media(width:1280px) {
             padding: 40px 12px;
 
         }
@@ -71,13 +71,13 @@ table {
         width: 100%;
         margin-bottom: 20px;
 
-        @include media(768px) {
+        @media screen and (max-width:768px) {
             min-width: 264px;
             margin-right: 68px;
             margin-bottom: 0;
         }
 
-        @include media(1280px) {
+        @media screen and (max-width:1280px) {
             min-width: 375px;
             margin-right: 16px;
         }
@@ -91,12 +91,12 @@ table {
         height: auto;
         border-radius: 5px;
 
-        @include media(768px) {
+        @media(max-width:768px) {
             width: 264px;
             height: auto;
         }
 
-        @include media(1280px) {
+        @media(max-width:1280px) {
             width: 300px;
             height: auto;
         }
@@ -108,7 +108,7 @@ table {
         font-size: 20px;
         line-height: 1.15;
 
-        @include media(1280px) {
+        @media(max-width:1280px) {
             font-size: 30px;
             line-height: 1.16;
         }
@@ -162,11 +162,11 @@ table {
     &__style {
         width: 100%;
 
-        @include media(768px) {
+        @media(max-width:768px) {
             width: 264px;
         }
 
-        @include media(1280px) {
+        @media(max-width:1280px) {
             width: 387px;
         }
     }
@@ -177,12 +177,12 @@ table {
 
 
 
-        @include media(767px, max-width) {
+        @media(max-width:767px) {
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        @include media(768px) {
+        @media(max-width:768px) {
             justify-content: flex-start;
         }
     }
@@ -200,12 +200,12 @@ table {
             display: none;
         }
 
-        @include media(767px) {
+        @media(max-width:767px) {
             top: 35%;
             left: 130px;
         }
 
-        @include media(1280px) {
+        @media(max-width:1280px) {
             top: 40%;
             left: 160px;
         }
@@ -233,7 +233,7 @@ table {
     margin-right: 20px;
     // &:not(:last-child){margin-right: 20px;}
 
-    @include media(768px) {
+    @media(max-width:768px) {
         margin-bottom: 0px;
         width: 140px;
 
@@ -242,7 +242,7 @@ table {
         }
     }
 
-    @include media(1280px) {
+    @media(max-width:1280px) {
         width: 150px;
     }
 }

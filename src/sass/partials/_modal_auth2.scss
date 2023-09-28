@@ -8,7 +8,7 @@
 
     background-color: #000c;
 
-    @include media(480px, max-width) {
+    @media screen and (max-width: 480px) {
         padding-left: 30px;
     }
 }
@@ -25,7 +25,7 @@
 
     background-color: var(--header-text-color);
 
-    @include media(768px, min-width) {
+    @media screen and (min-width: 720px) {
         max-width: 450px;
         min-width: 450px;
         width: 500px;
@@ -37,7 +37,7 @@
     width: 240px;
     margin: 0 auto;
 
-    @include media(768px, min-width) {
+    @media screen and (min-width: 768px) {
         width: 336px;
     }
 }
@@ -78,14 +78,23 @@
 .modal-auth__title {
     margin-right: 20px;
     font-family: 'Roboto', sans-serif;
-    @include font(500, 20px, 1.15, null, uppercase);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: null;
+    text-transform: uppercase;
 
     color: var(--gallery-text-color);
 }
 
 .modal-auth__button {
-    @include font(500, 12px, 1.17, null, uppercase);
+
     font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: null;
+    text-transform: uppercase;
 
     color: var(--accent-text-color);
     transform: scale(1);
@@ -112,7 +121,7 @@
     border: 1px solid var(--category-text-color);
     border-radius: 5px;
 
-    @include media(768px, min-width) {
+    @media screen and (min-width: 768px) {
         width: 100%;
     }
 
@@ -130,15 +139,21 @@
     margin-bottom: 10px;
     text-align: center;
 
-    @include font(500, 12px, 1.6, null, null);
+
     font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.6;
 
     color: var(--category-text-color);
 }
 
 .auth-form__sign-text {
     color: var(--category-text-color);
-    @include font(500, 16px, 1.6, null, null);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+
 }
 
 .auth-form__button {
@@ -153,10 +168,14 @@
     background-color: var(--accent-text-color);
     color: var(--header-text-color);
 
-    @include font(500, 20px, 1, null, uppercase);
-    font-family: inherit;
 
-    @include media(768px) {
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    text-transform: uppercase;
+
+    @media(width:768px) {
         height: 60px;
     }
 }
@@ -185,7 +204,10 @@
 }
 
 .auth-form__link {
-    @include font(500, 12px, 1.67, null, null);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+
     font-family: 'Roboto', sans-serif;
     color: var(--accent-text-color);
 
@@ -196,7 +218,9 @@
 }
 
 .auth-form__autorization {
-    @include centeredFlex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .is-hidden {
