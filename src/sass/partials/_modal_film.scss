@@ -1,0 +1,248 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.modal-film {
+    width: 280px;
+    height: 500px;
+    position: absolute;
+
+    transform: translate(-50%, -50%);
+    overflow: scroll;
+    background-color: var(--header-text-color);
+
+    @include media(768px) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 704px;
+        height: 552px;
+        overflow: hidden;
+    }
+
+    @include media(1280px) {
+        width: 806px;
+        height: 558px;
+    }
+
+    &--add {
+        margin-bottom: 20px;
+    }
+
+    &--padding {
+        padding: 40 20 20 20;
+
+        @include media(768px) {
+            padding: 40px 72px 40px 36px;
+            display: flex;
+        }
+
+        @include media(1280px) {
+            padding: 40px 12px;
+
+        }
+    }
+
+    &--style {
+        background: var(--accent-text-color);
+        border-radius: 5px;
+        padding: 1px 10px;
+        color: var(--header-text-color);
+    }
+
+    &__btn {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        z-index: 1;
+    }
+
+    &__close {
+        stroke: var(--gallery-text-color);
+        width: 30px;
+        height: 30px;
+
+    }
+
+    &__img-cont {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+
+        @include media(768px) {
+            min-width: 264px;
+            margin-right: 68px;
+            margin-bottom: 0;
+        }
+
+        @include media(1280px) {
+            min-width: 375px;
+            margin-right: 16px;
+        }
+    }
+
+    &__img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 240px;
+        height: auto;
+        border-radius: 5px;
+
+        @include media(768px) {
+            width: 264px;
+            height: auto;
+        }
+
+        @include media(1280px) {
+            width: 300px;
+            height: auto;
+        }
+    }
+
+    &__name {
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-size: 20px;
+        line-height: 1.15;
+
+        @include media(1280px) {
+            font-size: 30px;
+            line-height: 1.16;
+        }
+    }
+
+    // &__rating {
+    //   display: table;
+    //   text-indent: initial;
+    // }
+
+    &__item-name {
+        width: 100px;
+        color: var(--category-text-color);
+    }
+
+    &__item-description {
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    &__description {
+        line-height: 1.66;
+    }
+
+    // &__to-watched {
+    //   margin-right: 20px;
+
+    //   @include media(768px) {
+    //     margin-right: 15px;
+    //   }
+    // }
+
+    &__to-queue {
+        border: 1px solid var(--gallery-text-color);
+        color: var(--gallery-text-color);
+        transition: transform 0.5s linear, box-shadow 0.5s linear;
+
+        &:hover,
+        &:focus {
+            transform: scale(1.07);
+            box-shadow: 2px 7px 27px 1px var(--category-text-color);
+        }
+    }
+
+    &__style {
+        width: 100%;
+
+        @include media(768px) {
+            width: 264px;
+        }
+
+        @include media(1280px) {
+            width: 387px;
+        }
+    }
+
+    &__buttons {
+        width: 100%;
+        display: flex;
+
+
+
+        @include media(767px, max-width) {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @include media(768px) {
+            justify-content: flex-start;
+        }
+    }
+
+    &__to-trailer {
+        width: 80px;
+        height: 80px;
+        position: fixed;
+        display: block;
+        z-index: 1;
+        top: 190px;
+        left: 35%;
+
+        &.none {
+            display: none;
+        }
+
+        @include media(767px) {
+            top: 35%;
+            left: 130px;
+        }
+
+        @include media(1280px) {
+            top: 40%;
+            left: 160px;
+        }
+    }
+
+    &__youtube {
+        width: 80px;
+        height: 80px;
+        fill: #FF0000;
+
+        &:focus,
+        &:hover {
+            fill: #282828;
+        }
+
+        ;
+
+    }
+}
+
+.btns {
+    width: 150px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+    // &:not(:last-child){margin-right: 20px;}
+
+    @include media(768px) {
+        margin-bottom: 0px;
+        width: 140px;
+
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+
+    @include media(1280px) {
+        width: 150px;
+    }
+}
