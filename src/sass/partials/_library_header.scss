@@ -1,1 +1,139 @@
-@import './general'
+@import './general';
+
+.header-library {
+  background: $main-text-color;
+  background-image: linear-gradient(to bottom, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+    url('/src/images/library_background.jpg');
+  background-position: center;
+  background-size: cover;
+  padding: 40px 20px 62px 20px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+  &__icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: $second-text-color;
+    visibility: visible;
+  }
+  &__logo:hover > svg *,
+  &__logo:hover &__main-link,
+  &__logo:hover {
+    stroke: $third-text-color;
+    transition: 0.4s;
+    color: $third-text-color;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+
+  &__link-container {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__link {
+    font-family: $font-primary;
+    color: $second-text-color;
+    font-size: 12px;
+
+    &:hover,
+    &:focus {
+      color: $third-text-color;
+      transition: 0.4s;
+    }
+  }
+  &__current-link {
+    &::after {
+      content: '';
+      display: flex;
+      width: 69px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: #ff001b;
+    }
+  }
+  &__main-link {
+    visibility: hidden;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  &__button {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: none;
+    font-size: 12px;
+    padding: 14px 36px;
+    width: 130px;
+    cursor: pointer;
+  }
+  // DODAĆ STYLE TO JS
+  // &__button-active {
+  //   color: #ffffff;
+  //   box-shadow: 0px 8px 43px 0px #ff6b0199;
+  //   background-color: #ff6b01;
+  //   border-radius: 5px;
+  //   font-size: 12px;
+  //   padding: 14px 36px;
+  //   border: none;
+  //   width: 130px;
+  //   cursor: pointer;
+  // }
+}
+
+//tablet
+@media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+  .header-library {
+    background: $main-text-color;
+    background-image: linear-gradient(to bottom, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url('/src/images/library_background@2x.jpg');
+    background-position: center;
+    background-size: cover;
+    padding: 40px 32px 60px 32px;
+
+    &__main-link {
+      visibility: visible;
+      font-size: 30px;
+      font-weight: 500;
+      font-family: $font-primary;
+      color: $second-text-color;
+    }
+    &__button {
+      width: 152px;
+    }
+  }
+}
+
+//desktop
+@media screen and (min-width: $breakpoint-desktop) {
+  .header {
+    background: $main-text-color;
+    background-image: linear-gradient(to bottom, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url('/src/images/library_background@3x.jpg');
+    background-position: center;
+    background-size: cover;
+    padding: 40px 32px 60px 32px;
+
+    &__main-link {
+      visibility: visible;
+      font-size: 30px;
+      font-weight: 500;
+      font-family: $font-primary;
+      color: $second-text-color;
+    }
+    &__buttons {
+      gap: 16px;
+    }
+    &__button {
+      width: 148px;
+    }
+  }
+}
