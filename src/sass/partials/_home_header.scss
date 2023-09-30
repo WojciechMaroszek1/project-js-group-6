@@ -10,11 +10,81 @@
     &_container {
         height: 230px;
     }
+<<<<<<< Updated upstream
     &_icon-main {
         width: 24px;
         height: 24px;
         fill: none;
         stroke: $second-text-color;
+=======
+  }
+  &__current-link {
+    &::after {
+      content: '';
+      display: flex;
+      width: 34px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: #ff001b;
+    }
+  }
+  &__main-link {
+    visibility: hidden;
+  }
+
+  &__button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+  }
+  &__button-icon {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: $second-text-color;
+
+    &:hover,
+    &:focus {
+      stroke: $third-text-color;
+      transition: 0.4s;
+    }
+  }
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__input {
+    color: $second-text-color;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $second-text-color;
+    width: 280px;
+
+    &:hover,
+    &:focus {
+      color: $third-text-color;
+      transition: 0.4s;
+      border-bottom: 1px solid $third-text-color;
+      outline: none;
+    }
+  }
+  &__error {
+    margin-top: 16px;
+    color: #ff001b;
+    font-size: 14;
+    font-family: $font-primary;
+  }
+
+  //tablet
+  @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    .header {
+      background-image: url('/src/images/home_background@2x.jpg');
+      background-size: cover;
+      padding: 40px 33px 45px 33px;
+
+      &__main-link {
+>>>>>>> Stashed changes
         visibility: visible;
         margin-left: 20px;
         margin-top: 40px;

@@ -1,4 +1,5 @@
 <section>
+<<<<<<< Updated upstream
     <header class="header">
         <div class="header_container">
             <div class="header_img">
@@ -27,6 +28,41 @@
         </div>
         </div>
     </header>
+=======
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo">
+        <svg class="header__icon-main">
+          <use href="/src/images/icons.svg#icon-film"></use>
+        </svg>
+        <a class="header__main-link" href="/src/index.html">Filmoteka</a>
+      </div>
+
+      <div class="header__links-container">
+        <a class="header__links header__current-link" href="/src/index.html">HOME</a>
+        <a class="header__links" href="/src/library.html">MY LIBRARY</a>
+      </div>
+    </div>
+
+    <form class="header__form" id="header__form">
+      <input
+        class="header__input"
+        type="text"
+        name="name"
+        id="header__input"
+        placeholder="Movie search"
+      />
+      <button class="header__button" type="submit">
+        <svg class="header__button-icon">
+          <use href="/src/images/icons.svg#icon-search" x="-1" y="0"></use>
+        </svg>
+      </button>
+    </form>
+    <div class="header__error" id="header__error" style="display: none;">
+      <p>Search result not successful. Enter the correct movie name and try again.</p>
+    </div>
+  </header>
+>>>>>>> Stashed changes
 </section>
 
   
