@@ -24,7 +24,9 @@
     "posthtml-include": "^1.7.4"
   },
   "dependencies": {
+    "@firebase/database": "^1.0.1",
     "axios": "^1.5.1",
-    "notiflix": "^3.2.6"
+    "notiflix": "^3.2.6",
+    "simplelightbox": "^2.14.2"
   }
 }
