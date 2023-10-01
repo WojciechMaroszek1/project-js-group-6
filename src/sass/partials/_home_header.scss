@@ -104,6 +104,31 @@
     font-family: $font-primary;
   }
 
+  &__toggle-container {
+    width: 20px;
+    height: 20px;
+    float: right;
+  }
+
+  &__toggle {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    &__icon {
+      position: absolute;
+      fill: white;
+      width: 20px;
+      height: 20px;
+      right: 0;
+      top: 0;
+    }
+  }
+
+
   //tablet
   @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
     .header {
