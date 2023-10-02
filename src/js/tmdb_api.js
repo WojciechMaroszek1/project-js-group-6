@@ -70,6 +70,11 @@ export const renderMovies = (data, genreList) => {
     })
     .join('');
   movieList.innerHTML = movieListContent;
+  let darkMode = localStorage.getItem('darkMode');
+  if (darkMode === 'enabled') {
+    let cardTitle = document.querySelectorAll('.card__title');
+    cardTitle.forEach(e => e.classList.add('card__title--dark'));
+  }
 };
 
 const getGenres = (data, genreList) => {
@@ -132,6 +137,14 @@ const renderPagination = total => {
   const activePage = document
     .querySelector(`#page-${currentPage}`)
     .classList.add('pagination__button--active');
+  let darkMode = localStorage.getItem('darkMode');
+  if (darkMode === 'enabled') {
+    pagination.classList.add('pagination--dark');
+    let pageBtn = document.querySelectorAll('.pagination__button');
+    let pageCtrl = document.querySelectorAll('.pagination__controls');
+    pageBtn.forEach(e => e.classList.add('pagination__button--dark'));
+    pageCtrl.forEach(e => e.classList.add('pagination__controls--dark'));
+  }
   btnNext.addEventListener('click', nextPage);
   btnPrev.addEventListener('click', prevPage);
   pagination.addEventListener('click', changePage);
