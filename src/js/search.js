@@ -1,11 +1,11 @@
    
  document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("header_form"); 
+  const form = document.getElementById("header__form"); 
   const movieList = document.querySelector('.movies'); 
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    const searchInput = document.getElementById("header_input").value; 
+    const searchInput = document.getElementById("header__input").value; 
 
     
     searchMovies(searchInput, movieList); 
@@ -29,10 +29,15 @@
       try {
         const response = await fetch(apiUrl, options);
         const data = await response.json();
-    
-        const movies = data.results;
-    
-        renderMovies(movies, movieList);
+            
+        if (data.results.length === 0) {
+          document.getElementById("header__error").style.display = "block";
+          movieList.innerHTML = "";
+        } else {
+          document.getElementById("header__error").style.display = "none";
+          const movies = data.results;
+          renderMovies(movies, movieList);
+        }
       } catch (error) {
         console.error("Błąd pobierania danych:", error);
       }
@@ -42,20 +47,24 @@
       movieList.innerHTML = ""; 
     
       const movieListContent = data
-        .map(e => {
-          return `<li class="card">
-            <img
-              src="https://image.tmdb.org/t/p/w500/${e.poster_path}"
-              alt="${e.title}"
-              class="card__img"
-            />
-            <div class="card__info">
-              <p class="card__title">${e.title}</p>
-              <p class="card__desc">${e.release_date.slice(0, 4)}</p>
-            </div>
-          </li>`;
-        })
-        .join('');
+      .map(e => {
+        const posterUrl = e.poster_path
+          ? `https://image.tmdb.org/t/p/w500/${e.poster_path}`
+          : `/src/images/nothing_to_see.jpg`; 
+  
+        return `<li class="card">
+          <img
+            src="${posterUrl}"
+            alt="${e.title}"
+            class="card__img"
+          />
+          <div class="card__info">
+            <p class="card__title">${e.title}</p>
+            <p class="card__desc">${e.release_date.slice(0, 4)}</p>
+          </div>
+        </li>`;
+      })
+      .join('');
         
       movieList.innerHTML = movieListContent;
     
