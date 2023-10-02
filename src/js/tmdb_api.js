@@ -37,7 +37,7 @@ const fetchTrending = async () => {
   return { data: results[0].results, genreList: results[1].genres };
 };
 
-const renderMovies = (data, genreList) => {
+export const renderMovies = (data, genreList) => {
   const movieListContent = data
     .map(e => {
       if (!e.poster_path) {
