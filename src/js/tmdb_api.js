@@ -55,7 +55,7 @@ export const renderMovies = (data, genreList) => {
       } else {
         e.genres = getGenres(e.genre_ids, genreList);
       }
-      return `<li class="card">
+      return `<li class="card" id="toogle-film-card">
       <button type="button" class="card__link">Watch trailer</button>
       <img
         src="${e.poster_path}"
