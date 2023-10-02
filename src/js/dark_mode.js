@@ -1,5 +1,6 @@
 const toggle = document.querySelector('.header__toggle');
 let btnIcon = document.querySelector('.header__toggle__icon');
+let cardTitle = document.querySelector('.card__title');
 let darkMode = localStorage.getItem('darkMode');
 
 const enableDarkMode = () => {

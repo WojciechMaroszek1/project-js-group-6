@@ -1,5 +1,6 @@
 <section>
   <header class="header">
+    <div class="container">
     <div class="header__container">
       <div class="header__logo">
         <svg class="header__icon-main">
@@ -13,7 +14,13 @@
         <a class="header__links" href="/src/library.html">MY LIBRARY</a>
       </div>
     </div>
-
+    <div class="header__toggle-container">
+      <button class="header__toggle" type="button">
+        <svg class="header__toggle__icon">
+          <use href="/src/images/icons.svg#icon-sun"></use>
+        </svg>
+      </button>
+    </div>
     <form class="header__form">
       <input
         class="header__input"
@@ -31,12 +38,6 @@
     <div class="header__error">
       <p>Search result not successful. Enter the correct movie name and try again.</p>
     </div>
-    <div class="header__toggle-container">
-    <button class="header__toggle" type="button">
-      <svg class="header__toggle__icon">
-        <use href="/src/images/icons.svg#icon-sun"></use>
-      </svg>
-    </button>
   </div>
   </header>
 </section>

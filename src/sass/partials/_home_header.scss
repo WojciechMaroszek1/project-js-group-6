@@ -2,11 +2,14 @@
 
 //mobile
 .header {
+  width: 100%;
   background-image: url('/src/images/home_background.jpg');
   background-size: cover;
   padding: 40px 20px 44px 20px;
 
   &__container {
+    margin: 0 auto;
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -158,6 +161,7 @@
   //desktop
   @media screen and (min-width: $breakpoint-desktop) {
     .header {
+      height: 216px;
       background-image: url('/src/images/home_background@4x.jpg');
       background-size: cover;
       padding: 40px 33px 45px 33px;
