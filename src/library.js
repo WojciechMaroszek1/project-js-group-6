@@ -1,2 +1,2 @@
-import { showLoader, hideLoader } from './loader';
+// import { showLoader, hideLoader } from './loader';
 import './js/watched-films';

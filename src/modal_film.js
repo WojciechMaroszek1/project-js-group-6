@@ -3,14 +3,17 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import { ref, onValue } from 'firebase/database';
 import { createModalFilm } from './created-modal-film';
 import axios from 'axios';
-
+import { showLoader, hideLoader } from './loader';
 export async function getMovieById(idMovie) {
+  showLoader();
   try {
     const response = await axios.get(
       `${BASE_URL}/movie/${idMovie}?api_key=${API_KEY}&language=en-US`,
     );
+    hideLoader();
     return response.data;
   } catch (error) {
+    hideLoader();
     showNotifyError('Something went wrong &#128543;');
   }
 }
