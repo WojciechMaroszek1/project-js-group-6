@@ -3,3 +3,5 @@ import './library';
 import './js/tmdb_api';
 import './js/search';
 import './js/dark_mode';
+import './modal_film-information';
+import './js/open_modal';
