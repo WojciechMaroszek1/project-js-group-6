@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("modal");
-    const img = document.getElementById("https://image.tmdb.org/t/p/w500//1fa9XrBaZugEmzelX8r9az9zaje.jpg");
+    const img = document.getElementById("");
     const close = document.getElementById("close");
 
     img.addEventListener("click", function () {
