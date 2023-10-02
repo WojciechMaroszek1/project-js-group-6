@@ -7,6 +7,8 @@
   padding: 40px 20px 44px 20px;
 
   &__container {
+    margin: 0 auto;
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,6 +112,31 @@
     font-family: $font-primary;
   }
 
+  &__toggle-container {
+    width: 20px;
+    height: 20px;
+    float: right;
+  }
+
+  &__toggle {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    &__icon {
+      position: absolute;
+      fill: white;
+      width: 20px;
+      height: 20px;
+      right: 0;
+      top: 0;
+    }
+  }
+
+
   //tablet
   @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
     .header {
@@ -142,6 +169,7 @@
   //desktop
   @media screen and (min-width: $breakpoint-desktop) {
     .header {
+      height: 216px;
       background-image: url('/src/images/home_background@4x.jpg');
       background-size: cover;
       padding: 40px 33px 45px 33px;
