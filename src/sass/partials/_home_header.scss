@@ -2,8 +2,7 @@
 
 //mobile
 .header {
-  width: 100%;
-  background-image: url('/src/images/home_background.jpg');
+  background-image: url('/src/images/home_background_phone@3x.jpg');
   background-size: cover;
   padding: 40px 20px 44px 20px;
 
@@ -63,9 +62,13 @@
   }
 
   &__button {
+    display: flex;
+    justify-content: flex-end;
     background-color: transparent;
     cursor: pointer;
     border: none;
+    position: absolute;
+    margin-left: 265px;
   }
   &__button-icon {
     width: 12px;
@@ -81,8 +84,10 @@
   }
   &__form {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
   &__input {
     color: $second-text-color;
@@ -135,7 +140,7 @@
   //tablet
   @media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
     .header {
-      background-image: url('/src/images/home_background@2x.jpg');
+      background-image: url('/src/images/home_background@3x.jpg');
       background-size: cover;
       padding: 40px 33px 45px 33px;
 
@@ -151,6 +156,9 @@
       }
       &__input {
         width: 360px;
+      }
+      &__button {
+        margin-left: 345px;
       }
       &__error {
         text-align: center;
@@ -178,6 +186,9 @@
       }
       &__input {
         width: 394px;
+      }
+      &__button {
+        margin-left: 250px;
       }
       &__error {
         margin-top: 20px;

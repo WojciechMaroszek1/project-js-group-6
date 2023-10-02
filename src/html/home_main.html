@@ -1,17 +1,18 @@
 <section>
   <ul class="movies"></ul>
-  <div class="pages">
-    <button class="pages__button pages__button--controls" type="button">
-      <svg class="pages__icon">
+  <nav class="pagination">
+    <button class="pagination__controls" id="button-prev" type="button">
+      <svg class="pagination__icon">
         <use href="/src/images/icons.svg#icon-arrow-left"></use>
       </svg>
     </button>
-    <button class="pages__button pages__button--active" type="button">1</button>
-    <button class="pages__button" type="button">2</button>
-    <button class="pages__button pages__button--controls" type="button">
-      <svg class="pages__icon">
+    <div class="pagination__numbers">
+      <button class="pagination__button pagination__button--active" type="button">1</button>
+    </div>
+    <button class="pagination__controls" id="button-next" type="button">
+      <svg class="pagination__icon">
         <use href="/src/images/icons.svg#icon-arrow-right"></use>
       </svg>
     </button>
-  </div>
+  </nav>
 </section>
