@@ -21,7 +21,7 @@
         </svg>
       </button>
     </div>
-    <form class="header__form">
+    <form class="header__form" id="header__form">
       <input
         class="header__input"
         type="search"
@@ -29,13 +29,13 @@
         id="header__input"
         placeholder="Movie search"
       />
-      <button class="header__button" type="button">
+      <button class="header__button" type="submit">
         <svg class="header__button-icon">
           <use href="/src/images/icons.svg#icon-search" x="-1" y="0"></use>
         </svg>
       </button>
     </form>
-    <div class="header__error">
+    <div class="header__error" id="header__error" style="display: none;">
       <p>Search result not successful. Enter the correct movie name and try again.</p>
     </div>
   </div>
