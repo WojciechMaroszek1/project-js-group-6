@@ -26,6 +26,7 @@
   "dependencies": {
     "@firebase/database": "^1.0.1",
     "axios": "^1.5.1",
+    "js-loading-overlay": "^1.2.0",
     "notiflix": "^3.2.6",
     "simplelightbox": "^2.14.2"
   }
