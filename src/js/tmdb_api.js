@@ -10,6 +10,7 @@ const btnNext = document.querySelector('#button-next');
 
 let currentPage = 1;
 let totalPages = 1;
+let currentSearch = 'trending';
 
 const options = {
   method: 'GET',
@@ -19,13 +20,42 @@ const options = {
   },
 };
 
-const fetchTrending = async () => {
-  const baseUrl = 'https://api.themoviedb.org/3';
-  const queries = [
-    `trending/movie/day?language=pl-PL&page=${currentPage}`,
-    'genre/movie/list?language=pl',
-  ];
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('header__form');
+  const movieList = document.querySelector('.movies');
 
+  fetchMovies()
+    .then(({ data, genreList }) => {
+      renderPagination(totalPages);
+      window.addEventListener('resize', updateSize);
+      renderMovies(data, genreList);
+    })
+    .catch(error => console.log(error));
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    currentSearch = document.getElementById('header__input').value
+      ? document.getElementById('header__input').value
+      : 'trending';
+    currentPage = 1;
+    fetchMovies()
+      .then(({ data, genreList }) => {
+        renderPagination(totalPages);
+        renderMovies(data, genreList);
+      })
+      .catch(error => console.log(error));
+  });
+});
+
+const fetchMovies = async () => {
+  const baseUrl = 'https://api.themoviedb.org/3';
+  const queries =
+    currentSearch === 'trending'
+      ? [`trending/movie/day?language=pl-PL&page=${currentPage}`, 'genre/movie/list?language=pl']
+      : [
+          `search/movie?language=pl-PL&query=${currentSearch}&page=${currentPage}`,
+          'genre/movie/list?language=pl',
+        ];
   const promiseArray = queries.map(async query => {
     const response = await fetch(`${baseUrl}/${query}`, options);
     return response.json();
@@ -111,9 +141,9 @@ const renderPagination = total => {
     paginationContent.push(pageBtn);
   }
 
-  const currentPosition = paginationContent.length - 1;
+  const currentPosition = paginationContent.findIndex(e => currentPageBtn) + 3;
   for (let i = currentPosition; i <= 4; i++) {
-    if (paginationContent.length <= 4) {
+    if (paginationContent.length < 5 && currentPage - i > 0) {
       const pageBtn = `<button class="pagination__button" id="page-${currentPage - i}" data-page="${
         currentPage - i
       }" type="button">${currentPage - i}</button>`;
@@ -123,12 +153,12 @@ const renderPagination = total => {
   }
   if (window.innerWidth >= 768) {
     const dots = '<span class="pagination__dots">...</span>';
-    if (currentPage >= 4) {
+    if (currentPage >= 4 && totalPages > 5) {
       const firstBtn = `<button class="pagination__button" id="page-1" data-page="1" type="button">1</button>`;
       paginationContent.unshift(dots);
       paginationContent.unshift(firstBtn);
     }
-    if (totalPages - currentPage >= 3) {
+    if (totalPages - currentPage >= 3 && totalPages > 5) {
       const lastBtn = `<button class="pagination__button" id="page-${totalPages}" data-page="${totalPages}" type="button">${totalPages}</button>`;
       paginationContent.push(dots);
       paginationContent.push(lastBtn);
@@ -164,7 +194,7 @@ const nextPage = e => {
   btnPrev.removeEventListener('click', prevPage);
   pagination.removeEventListener('click', changePage);
   currentPage++;
-  fetchTrending()
+  fetchMovies()
     .then(({ data, genreList }) => {
       renderPagination(totalPages);
       renderMovies(data, genreList);
@@ -178,7 +208,7 @@ const prevPage = e => {
     btnPrev.removeEventListener('click', prevPage);
     pagination.removeEventListener('click', changePage);
     currentPage--;
-    fetchTrending()
+    fetchMovies()
       .then(({ data, genreList }) => {
         renderPagination(totalPages);
         renderMovies(data, genreList);
@@ -195,19 +225,10 @@ const changePage = e => {
   btnPrev.removeEventListener('click', prevPage);
   pagination.removeEventListener('click', changePage);
   currentPage = parseInt(e.target.dataset.page);
-  fetchTrending()
+  fetchMovies()
     .then(({ data, genreList }) => {
       renderPagination(totalPages);
       renderMovies(data, genreList);
     })
     .catch(error => console.log(error));
 };
-
-fetchTrending()
-  .then(({ data, genreList }) => {
-    renderPagination(totalPages);
-    renderMovies(data, genreList);
-  })
-  .catch(error => console.log(error));
-
-window.addEventListener('resize', updateSize);
