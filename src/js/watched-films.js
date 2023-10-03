@@ -9,7 +9,34 @@ import renderMovies from './tmdb_api';
 const btnWatched = document.getElementById('btn-watched');
 const btnQueue = document.getElementById('btn-queue');
 
-// Założenie, przyciski na modalu dodają i usuwają elementy z local Storage (watched / queue)
+// console.log(data);
+
+// Funkcja dodająca film do localStorage
+
+function addToLocalStorage(movieId, listType) {
+  const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+  if (!moviesList.includes(movieId)) {
+    moviesList.push(movieId);
+    localStorage.setItem(listType, JSON.stringify(moviesList));
+  }
+}
+
+// Funkcja usuwająca film z localStorage po listType
+
+function removeFromLocalStorage(movieId, listType) {
+  const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+  const updatedList = moviesList.filter(id => id !== movieId);
+  localStorage.setItem(listType, JSON.stringify(updatedList));
+}
+
+function checkMovieInLocalStorage(movieId, listType) {
+  const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+  return moviesList.includes(movieId);
+}
+export { addToLocalStorage, removeFromLocalStorage, checkMovieInLocalStorage };
+
+// Założenie, przyciski na modalu dodają i usuwają elementy z local Storage ListType => (watched / queue)
+
 window.addEventListener('DOMContentLoaded', event => {
   // Oczekiwanie na załadowanie struktury DOM
   btnWatched.addEventListener('click', () => {
