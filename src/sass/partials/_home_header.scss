@@ -105,7 +105,6 @@
     }
   }
   &__error {
-    visibility: hidden;
     margin-top: 16px;
     color: #ff001b;
     font-size: 14;
@@ -155,10 +154,10 @@
         justify-content: center;
       }
       &__input {
-        width: 360px;
+        width: 394px;
       }
       &__button {
-        margin-left: 345px;
+        margin-left: 375px;
       }
       &__error {
         text-align: center;
