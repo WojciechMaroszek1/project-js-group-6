@@ -1,4 +1,4 @@
-const AUTH_KEY =
+export const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
 
 const movieList = document.querySelector('.movies');
@@ -69,6 +69,7 @@ export const renderMovies = (data, genreList) => {
     </li>`;
     })
     .join('');
+
   movieList.innerHTML = movieListContent;
   let darkMode = localStorage.getItem('darkMode');
   if (darkMode === 'enabled') {

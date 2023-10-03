@@ -1,36 +1,55 @@
-<div class="backdrop__modal-film" id="html" hidden>
-  <div class="modal-film">
-    <button type="button" class="modal-film__btn" aria-label="close modal button">
-      <svg class="modal-film__close">
-        <use href="../src/images/icons.svg#icon-close"></use>
-      </svg>
-    </button>
-    <div class="modal-film--padding">
-      <div class="modal-film__img-cont"></div>
-      <button type="button" class="modal-film__to-trailer" aria-label="view trailers on YouTube">
-        <svg class="modal-film__youtube">
-          <use href="../src/images/icons.svg#icon-youtube"></use>
-        </svg>
-      </button>
-      <div class="modal-film__img-cont">
-        <div class="modal-film__style">
-          <div class="modal-film--add"></div>
-          <div class="modal-film__buttons">
-            <button
-              type="button"
-              class="modal-film__to-watched btns btn-accent js-film__watch"
-              id="add-to-watched"
-            >
-              add to watched
-            </button>
-            <button
-              type="button"
-              class="modal-film__to-queue btns btn-light js-film__queue"
-              id="add-to-queue"
-            >
-              add to queue
-            </button>
-          </div>
+<!-- SMP - Save Modal Project
+(,,◕　⋏　◕,,) -->
+
+<div class="backdrop-movie modal-movie-is-hidden" data-modal>
+  <div class="modal-movie">
+    <div class="modal-movie__poster-box">
+      <img
+        class="modal-movie__poster"
+        src="https://image.tmdb.org/t/p/original/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg"
+        alt="The Flash"
+      />
+    </div>
+
+    <button class="modal-movie__btn-close" data-modal-close>&times</button>
+
+    <div class="modal-movie__info">
+      <h2 class="modal-movie__title">The Flash</h2>
+
+      <ul class="modal-movie__list">
+        <li class="modal-movie__item modal-movie__item--label">vote / votes</li>
+        <li class="modal-movie__item modal-movie__item--value">
+          <span class="modal-movie__vote">6.9</span><span> / </span>
+          <span class="modal-movie__vote_count">1161</span>
+        </li>
+        <li class="modal-movie__item modal-movie__item--label">popularity</li>
+        <li class="modal-movie__item modal-movie__item--value">
+          <span class="modal-movie__popularity">2118.7</span>
+        </li>
+        <li class="modal-movie__item modal-movie__item--label">original title</li>
+        <li class="modal-movie__item modal-movie__item--value">
+          <span class="modal-movie__original-title">The Flash</span>
+        </li>
+        <li class="modal-movie__item modal-movie__item--label">genre</li>
+        <li class="modal-movie__item modal-movie__item--value">
+          <span class="modal-movie__genre">Action, Adventure, Science Fiction</span>
+        </li>
+      </ul>
+      <div class="modal-movie__description">
+        <h3 class="modal-movie__about">about</h3>
+        <p class="modal-movie__text">
+          When his attempt to save his family inadvertently alters the future, Barry Allen becomes
+          trapped in a reality in which General Zod has returned and there are no Super Heroes to
+          turn to. In order to save the world that he is in and return to the future that he knows,
+          Barry's only hope is to race for his life. But will making the ultimate sacrifice be
+          enough to reset the universe?
+        </p>
+      </div>
+
+      <div class="modal-movie__btns">
+        <div class="modal-movie__box">
+          <!-- <button class="modal-movie__btn-watched">add to watched</button>
+          <button class="modal-movie__btn-queue">add to queue</button> -->
         </div>
       </div>
     </div>
