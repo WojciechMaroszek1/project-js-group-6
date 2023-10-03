@@ -1,4 +1,4 @@
-import placeholder from '/src/images/nothing_to_see.jpg';
+//import placeholder from './src/images/nothing_to_see.jpg';
 
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
@@ -77,40 +77,38 @@ export const renderMovies = (data, genreList) => {
     let cardTitle = document.querySelectorAll('.card__title');
     cardTitle.forEach(e => e.classList.add('card__title--dark'));
   }
-
 };
 
-// movieList.addEventListener("click", toggleModal)
-// function toggleModal() {
-//   document.getElementById('modal-film').classList.remove("is-hidden");
-// }
-// function toggleModalClose() {
-//   document.getElementById('modal-film').classList.add("is-hidden");
-// }
+// Tutaj zaczyna się obsług otwarcia i zamknięcia modala po kliknięciu na kartę filmu
 
-// (() => {
-// 	const refs = {
-// 		openModalBtn: document.querySelector("[data-modal-open]"),
-// 		closeModalBtn: document.querySelector("[data-modal-close]"),
-// 		modal: document.querySelector("#modal-film"),
-// 	};
+//Event listener i funkcja otwierająca modal
+movieList.addEventListener('click', event => {
+  if (event.target.closest('.card')) {
+    const modalId = event.target.closest('.card').getAttribute('data-modal-target');
 
-// 	refs.openModalBtn.addEventListener("click", toggleModal);
-// 	refs.closeModalBtn.addEventListener("click", toggleModal);
+    const modal = document.getElementById('modal-film');
 
-// 	function toggleModal() {
-// 		refs.modal.classList.toggle("is-hidden");
-// 	}
-// })();
-
-  const selectCard = document.querySelector('.card')
-
-  selectCard.addEventListener("click", toggleModal)
-  function toggleModal (){
-    var removeIsHidden = document.getElementById("modal-film")
-      removeIsHidden.classList.remove("is-hidden");
+    if (modal) {
+      modal.classList.remove('is-hidden');
+    }
   }
+});
 
+// Funkcja zamykająca modal
+function filmModalClose() {
+  const modal = document.getElementById('modal-film');
+  if (modal) {
+    modal.classList.add('is-hidden');
+  }
+}
+
+// Obsługa kliknięcia na ikonkę zamknięcia
+const closeIcon = document.querySelector('.modal-film__icon-close');
+if (closeIcon) {
+  closeIcon.addEventListener('click', filmModalClose);
+}
+
+// Koniec obsługi otwarcia i zamknięcia modala
 
 const getGenres = (data, genreList) => {
   const filtered = genreList.filter(e => data.includes(e.id));
