@@ -115,7 +115,7 @@
   &__toggle-container {
     width: 20px;
     height: 20px;
-    float: right;
+    margin-bottom: 20px;
   }
 
   &__toggle {
@@ -160,6 +160,9 @@
       &__button {
         margin-left: 375px;
       }
+      &__toggle-container {
+        float: right;
+      }
       &__error {
         text-align: center;
       }
@@ -193,6 +196,9 @@
       &__error {
         margin-top: 20px;
         text-align: center;
+      }
+      &__toggle-container {
+        float: right;
       }
     }
   }
