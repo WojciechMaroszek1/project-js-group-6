@@ -1,32 +1,38 @@
 <div class="backdrop__modal-film" id="html" hidden>
-    <div class="modal-film">
-        <button type="button" class="modal-film__btn" aria-label="close modal button">
-            <svg class="modal-film__close">
-                <use href="../src/images/icons.svg#icon-close"></use>
-            </svg>
-        </button>
-        <div class="modal-film--padding">
-            <div class="modal-film__img-cont"></div>
-            <button type="button" class="modal-film__to-trailer" aria-label="view trailers on YouTube">
-                <svg class="modal-film__youtube">
-                    <use href="../src/images/icons.svg#icon-youtube"></use>
-                </svg>
+  <div class="modal-film">
+    <button type="button" class="modal-film__btn" aria-label="close modal button">
+      <svg class="modal-film__close">
+        <use href="../src/images/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="modal-film--padding">
+      <div class="modal-film__img-cont"></div>
+      <button type="button" class="modal-film__to-trailer" aria-label="view trailers on YouTube">
+        <svg class="modal-film__youtube">
+          <use href="../src/images/icons.svg#icon-youtube"></use>
+        </svg>
+      </button>
+      <div class="modal-film__img-cont">
+        <div class="modal-film__style">
+          <div class="modal-film--add"></div>
+          <div class="modal-film__buttons">
+            <button
+              type="button"
+              class="modal-film__to-watched btns btn-accent js-film__watch"
+              id="add-to-watched"
+            >
+              add to watched
             </button>
-            <div class="modal-film__img-cont">
-                <div class="modal-film__style">
-                    <div class="modal-film--add"></div>
-                    <div class="modal-film__buttons">
-                        <button type="button" class="modal-film__to-watched btns btn-accent js-film__watch"
-                            id="add-to-watched">
-                            add to watched
-                        </button>
-                        <button type="button" class="modal-film__to-queue btns btn-light js-film__queue"
-                            id="add-to-queue">
-                            add to queue
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <button
+              type="button"
+              class="modal-film__to-queue btns btn-light js-film__queue"
+              id="add-to-queue"
+            >
+              add to queue
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

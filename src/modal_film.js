@@ -1,7 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { ref, onValue } from 'firebase/database';
-import { createModalFilm } from './created-modal-film';
+import { createModalFilm } from './modal_film-information';
 import axios from 'axios';
 
 export async function getMovieById(idMovie) {
