@@ -1,3 +1,5 @@
+import placeholder from '/src/images/nothing_to_see.jpg';
+
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
 
@@ -41,7 +43,7 @@ export const renderMovies = (data, genreList) => {
   const movieListContent = data
     .map(e => {
       if (!e.poster_path) {
-        e.poster_path = 'https://www.csaff.org/wp-content/uploads/csaff-no-poster.jpg';
+        e.poster_path = placeholder;
       } else {
         e.poster_path = `https://image.tmdb.org/t/p/w500/${e.poster_path}`;
       }
