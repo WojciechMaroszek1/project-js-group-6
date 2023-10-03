@@ -7,23 +7,30 @@
         </svg>
         <a class="header-library__main-link" href="/src/index.html">Filmoteka</a>
       </div>
-
-      <div class="header-library__link-container">
-        <a class="header-library__link" href="/src/index.html">HOME</a>
-        <a class="header-library__link header-library__current-link" href="/src/library.html"
-          >MY LIBRARY</a
-        >
+     <div class="header-library__link-container">
+          <a class="header-library__link" href="/src/index.html">HOME</a>
+          <a class="header-library__link header-library__current-link" href="/src/library.html"
+            >MY LIBRARY</a
+          >
+        </div>
       </div>
-    </div>
-    <div class="header-library__buttons">
-      <button
-        class="header-library__button header-library__button-active"
-        id="btn-watched"
-        type="button"
-      >
-        WATCHED
-      </button>
-      <button class="header-library__button" id="btn-queue" type="button">QUEUE</button>
+      <div class="header__toggle-container">
+        <button class="header__toggle" type="button">
+          <svg class="header__toggle__icon">
+            <use href="/src/images/icons.svg#icon-sun"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="header-library__buttons">
+        <button
+          class="header-library__button header-library__button-active"
+          id="btn-watched"
+          type="button"
+        >
+          WATCHED
+        </button>
+        <button class="header-library__button" id="btn-queue" type="button">QUEUE</button>
+      </div>
     </div>
   </header>
 </section>
