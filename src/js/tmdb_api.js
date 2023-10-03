@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
 
@@ -55,7 +58,7 @@ export const renderMovies = (data, genreList) => {
       } else {
         e.genres = getGenres(e.genre_ids, genreList);
       }
-      return `<li class="card" data-modal-open>
+      return `<div class="card"><li>
       <button type="button" class="card__link">Watch trailer</button>
       <img
         src="${e.poster_path}"
@@ -66,7 +69,7 @@ export const renderMovies = (data, genreList) => {
         <p class="card__title">${e.title}</p>
         <p class="card__desc">${e.genres} | ${e.release_year}</p>
       </div>
-    </li>`;
+    </li></div>`;
     })
     .join('');
   movieList.innerHTML = movieListContent;
