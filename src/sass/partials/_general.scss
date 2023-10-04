@@ -1,3 +1,52 @@
+$font-primary: 'Roboto', sans-serif;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+$website-main-color: rgb(255, 107, 8);
+$website-color-secondary: rgb(39, 46, 52);
+
+//text colors
+$text-color-light: rgb(255, 255, 255);
+$text-color-dark: rgb(0, 0, 0);
+$text-color-additional-primary: rgb(255, 107, 8);
+$text-color-additional-secondary: rgb(84, 84, 84);
+
+//font sizes
+
+//descriptions, header menu, buttons text etc
+$font-size-small: 1.2rem;
+//h2
+$font-size-medium: 2rem;
+//h1
+$font-size-large: 3rem;
+//*others
+$font-size-header-search: 1.4rem;
+$font-size-footer: 1.6rem;
+
+//footer
+$footer-color-background: rgb(247, 247, 247); //#f7f7f7
+$footer-color-text: $text-color-additional-secondary; //#545454
+$font-size-footer-mobile: 1.4rem;
+$breakpoint-modal-squad-width: 1777px;
+
+//hover and focus colors
+$hover-color-primary: rgb(255, 107, 8);
+$hover-color-secondary: rgb(160, 0, 0);
+$hover-color-sec-darker: rgb(107, 0, 0);
+
+//color for underlines and error message in header
+$additional-color: rgb(255, 0, 27);
+
+//*header sticky (if we want to do it like it's done in an example)
+$background-image-sticky: linear-gradient(#ff001bb3, #000000b3);
+
+//breakpoints
+$breakpoint-mobile: 30em; // 480px
+$breakpoint-tablet: 48em; //768px
+$breakpoint-desktop: 80em; //1280px
+$breakpoint-desktop-large: 120em; //1920px
+
+
 $font-primary: 'Roboto';
 $font-secondary: 'Inter', sans-serif;
 
@@ -6,9 +55,9 @@ $second-text-color: #ffffff;
 $third-text-color: #ff6b08;
 
 
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1280px;
+// $breakpoint-mobile: 480px;
+// $breakpoint-tablet: 768px;
+// $breakpoint-desktop: 1280px;
 
 body {
   margin: 0 auto;
