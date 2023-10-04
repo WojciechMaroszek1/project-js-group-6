@@ -1,7 +1,31 @@
 <div class="backdrop is-hidden" id="modal-film" data-modal-target="modal-film">
   <div class="modal-film__container">
-    <a href="javascript:void(0)" class="modal-film__icon-close" onclick="filmModalClose()"
-      >&#x2715;</a
-    >
+    <div>
+      <a href="javascript:void(0)"onclick="filmModalClose()">
+        <svg class="modal-film__icon-close"><use a href="/src/images/icons.svg#icon-close"></use></svg>
+      </a>
+      <div class="modal-film__photo-card">
+        <img 
+        class="modal-film__photo" 
+        src="./images/nothing_to_see.jpg" 
+        alt="nothing to see here">
+      </img>
+      </div>
+      <h3 class="modal-film__title">Movie Title</h3>
+      <div class="modal-film__info-box">
+        <div class="modal-film__text">
+          <span>Vote / Votes</span><span>Data</span>
+        </div>
+        <div class="modal-film__text">
+          <span>Popularity</span><span>Data</span>
+        </div>
+        <div class="modal-film__text">
+          <span>Original Title</span><span>Data</span>
+        </div>
+        <div class="modal-film__text">
+          <span>Genre</span><span>Data</span>
+        </div>
+      </div>
+      </div>
   </div>
 </div>

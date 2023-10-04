@@ -94,12 +94,17 @@ movieList.addEventListener('click', event => {
     const modalId = event.target.closest('.card').getAttribute('data-modal-target');
 
     const modal = document.getElementById('modal-film');
-
     if (modal) {
       modal.classList.remove('is-hidden');
     }
   }
 });
+
+// Funkcja disableScroll
+movieList.addEventListener('click', disableScroll)
+function disableScroll() {
+  document.body.classList.add("modal-film__stop-scrolling");
+}
 
 // Funkcja zamykająca modal
 function filmModalClose() {
@@ -113,6 +118,11 @@ function filmModalClose() {
 const closeIcon = document.querySelector('.modal-film__icon-close');
 if (closeIcon) {
   closeIcon.addEventListener('click', filmModalClose);
+}
+// Funkcja enableScroll
+closeIcon.addEventListener('click', enableScroll);
+function enableScroll() {
+  document.body.classList.remove("modal-film__stop-scrolling");
 }
 
 // Koniec obsługi otwarcia i zamknięcia modala
@@ -249,3 +259,9 @@ fetchTrending()
   .catch(error => console.log(error));
 
 window.addEventListener('resize', updateSize);
+
+function scrollTopPage (){
+  $(window).scrollTop(position);
+}
+btnNext.addEventListener('click', scrollTopPage);
+btnPrev.addEventListener('click', scrollTopPage);

@@ -1,13 +1,64 @@
+@import '../partials/general';
+
 .modal-film__container {
     width: 280px;
     height: 940px;
     background-color:$second-text-color;
     margin-top: 20px;
     overflow-y: auto;
+    overflow-x:hidden;
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 .modal-film__icon-close {
     width: 30px;
     height: 30px;
-    display:flex;
-    flex-direction: row;
+    fill: $main-text-color;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        fill: $third-text-color;
+        transform: scale(1.05);
+    }
+    &:focus {
+        fill: $third-text-color;
+        transform: scale(1.05);
+    }
+}
+.modal-film__stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+.modal-film__photo {
+    width: 240px;
+    height: 357px;
+}
+
+.modal-film__photo-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 68px;
+}
+.modal-film__info-box {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.modal-film__title {
+    font-family: $font-primary;
+    font-size: 20px;
+    line-height: 23.44px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.modal-film__text {
+
 }
