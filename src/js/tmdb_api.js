@@ -1,3 +1,5 @@
+// import { addModalListenerFunction } from '../modal_open';
+
 export const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
 
@@ -71,6 +73,7 @@ export const renderMovies = (data, genreList) => {
     .join('');
 
   movieList.innerHTML = movieListContent;
+
   let darkMode = localStorage.getItem('darkMode');
   if (darkMode === 'enabled') {
     let cardTitle = document.querySelectorAll('.card__title');

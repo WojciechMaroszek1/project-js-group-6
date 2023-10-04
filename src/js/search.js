@@ -1,4 +1,4 @@
-import { addModalListenerFunction } from '../modal_open';
+// import { addModalListenerFunction } from '../modal_open';
 
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('header__form');
@@ -67,5 +67,5 @@ function renderMovies(data, movieList) {
     .join('');
 
   movieList.innerHTML = movieListContent;
-  addModalListenerFunction();
+  // addModalListenerFunction();
 }
