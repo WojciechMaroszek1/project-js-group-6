@@ -1,5 +1,6 @@
 import placeholder from '/src/images/nothing_to_see.jpg';
 import { showLoader, hideLoader } from '../loader';
+import Notiflix from 'notiflix';
 
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
@@ -210,8 +211,8 @@ function filmModalClose() {
 
 // Początek obługi localStorage
 
-const btnWatched = document.getElementsByClassName('.modal-film__btns-addToWatched');
-const btnQueue = document.getElementsByClassName('.modal-film__btns-addToQueue');
+const btnWatched = document.querySelector('.modal-film__btns-addToWatched');
+const btnQueue = document.querySelector('.modal-film__btns-addToQueue');
 
 window.addEventListener('DOMContentLoaded', event => {
   btnWatched.addEventListener('click', () => {
@@ -225,50 +226,7 @@ window.addEventListener('DOMContentLoaded', event => {
   });
 });
 
-// function addToLocalStorage(movieId, listType) {
-//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
-//   if (!moviesList.includes(movieId)) {
-//     moviesList.push(movieId);
-//     localStorage.setItem(listType, JSON.stringify(moviesList));
-//   }
-// }
-
-// // Funkcja usuwająca film z localStorage po listType
-
-// function removeFromLocalStorage(movieId, listType) {
-//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
-//   const updatedList = moviesList.filter(id => id !== movieId);
-//   localStorage.setItem(listType, JSON.stringify(updatedList));
-// }
-
-// function checkMovieInLocalStorage(movieId, listType) {
-//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
-//   return moviesList.includes(movieId);
-// }
-
-// window.addEventListener('DOMContentLoaded', event => {
-//   // Oczekiwanie na załadowanie struktury DOM
-//   btnWatched.addEventListener('click', () => {
-//     const watchedMoviesArray = JSON.parse(localStorage.getItem('watched'));
-//     if (watchedMoviesArray) {
-//       loadMovies(watchedMoviesArray);
-//     } else {
-//       Notiflix.Notify.failure('brak obejrzanych filmów');
-//     }
-//   });
-
-//   btnQueue.addEventListener('click', () => {
-//     const queueMoviesArray = JSON.parse(localStorage.getItem('queue'));
-//     if (queueMoviesArray) {
-//       loadMovies(queueMoviesArray);
-//     } else {
-//       Notiflix.Notify.failure('brak filmów do obejrzenia');
-//     }
-//   });
-// });
-
-// addToLocalStorage(926393);
-// console.log(localStorage);
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // Konice obsługi localStorage
 
