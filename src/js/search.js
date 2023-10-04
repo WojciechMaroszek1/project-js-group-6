@@ -1,5 +1,5 @@
 import placeholder from '/src/images/nothing_to_see.jpg';
-
+import { showLoader, hideLoader } from '../loader';
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('header__form');
   const movieList = document.querySelector('.movies');
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 async function searchMovies(query, movieList) {
+  showLoader();
   const apiKey =
     'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ'; // Zastąp swoim kluczem API
   const baseUrl = 'https://api.themoviedb.org/3';
@@ -23,9 +24,7 @@ async function searchMovies(query, movieList) {
       Authorization: `Bearer ${apiKey}`,
     },
   };
-
   const apiUrl = `${baseUrl}/search/movie?query=${query}`;
-
   try {
     const response = await fetch(apiUrl, options);
     const data = await response.json();
@@ -38,7 +37,9 @@ async function searchMovies(query, movieList) {
       const movies = data.results;
       renderMovies(movies, movieList);
     }
+    hideLoader();
   } catch (error) {
+    hideLoader();
     console.error('Błąd pobierania danych:', error);
   }
 }
