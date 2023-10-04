@@ -1,4 +1,5 @@
 import placeholder from '/src/images/nothing_to_see.jpg';
+import { showLoader, hideLoader } from '../loader';
 
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
@@ -48,25 +49,31 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 const fetchMovies = async () => {
-  const baseUrl = 'https://api.themoviedb.org/3';
-  const queries =
-    currentSearch === 'trending'
-      ? [`trending/movie/day?language=pl-PL&page=${currentPage}`, 'genre/movie/list?language=pl']
-      : [
-          `search/movie?language=pl-PL&query=${currentSearch}&page=${currentPage}`,
-          'genre/movie/list?language=pl',
-        ];
-  const promiseArray = queries.map(async query => {
-    const response = await fetch(`${baseUrl}/${query}`, options);
-    return response.json();
-  });
-  const results = await Promise.all(promiseArray);
-  if (results[0].total_pages > 500) {
-    totalPages = 500;
-  } else {
-    totalPages = results[0].total_pages;
+  showLoader();
+  try {
+    const baseUrl = 'https://api.themoviedb.org/3';
+    const queries =
+      currentSearch === 'trending'
+        ? [`trending/movie/day?language=pl-PL&page=${currentPage}`, 'genre/movie/list?language=pl']
+        : [
+            `search/movie?language=pl-PL&query=${currentSearch}&page=${currentPage}`,
+            'genre/movie/list?language=pl',
+          ];
+    const promiseArray = queries.map(async query => {
+      const response = await fetch(`${baseUrl}/${query}`, options);
+      return response.json();
+    });
+    const results = await Promise.all(promiseArray);
+    if (results[0].total_pages > 500) {
+      totalPages = 500;
+    } else {
+      totalPages = results[0].total_pages;
+    }
+    hideLoader();
+    return { data: results[0].results, genreList: results[1].genres };
+  } catch (error) {
+    hideLoader();
   }
-  return { data: results[0].results, genreList: results[1].genres };
 };
 
 export const renderMovies = (data, genreList) => {
