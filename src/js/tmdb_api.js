@@ -48,17 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-const fetchMovies = async () => {
+const fetchMovies = async query => {
   showLoader();
   try {
     const baseUrl = 'https://api.themoviedb.org/3';
-    const queries =
-      currentSearch === 'trending'
-        ? [`trending/movie/day?language=pl-PL&page=${currentPage}`, 'genre/movie/list?language=pl']
-        : [
-            `search/movie?language=pl-PL&query=${currentSearch}&page=${currentPage}`,
-            'genre/movie/list?language=pl',
-          ];
+    const queries = query
+      ? [`movie/${query}`, 'genre/movie/list']
+      : currentSearch === 'trending'
+      ? [`trending/movie/day?page=${currentPage}`, 'genre/movie/list']
+      : [`search/movie?query=${currentSearch}&page=${currentPage}`, 'genre/movie/list'];
     const promiseArray = queries.map(async query => {
       const response = await fetch(`${baseUrl}/${query}`, options);
       return response.json();
@@ -70,7 +68,10 @@ const fetchMovies = async () => {
       totalPages = results[0].total_pages;
     }
     hideLoader();
-    return { data: results[0].results, genreList: results[1].genres };
+    if (results[0].results) {
+      return { data: results[0].results, genreList: results[1].genres };
+    }
+    return { data: results[0], genreList: results[1].genres };
   } catch (error) {
     hideLoader();
   }
@@ -94,8 +95,7 @@ export const renderMovies = (data, genreList) => {
       } else {
         e.genres = getGenres(e.genre_ids, genreList);
       }
-      return `<li class="card" id="toogle-film-card" data-modal-open>
-      <button type="button" class="card__link">Watch trailer</button>
+      return `<li class="card" id="toogle-film-card" data-id="${e.id}" data-modal-open>
       <img
         src="${e.poster_path}"
         alt="${e.title}"
@@ -121,8 +121,13 @@ export const renderMovies = (data, genreList) => {
 //Event listener i funkcja otwierająca modal
 movieList.addEventListener('click', event => {
   if (event.target.closest('.card')) {
+    document.body.classList.add('modal-film__stop-scrolling');
     const modalId = event.target.closest('.card').getAttribute('data-modal-target');
-
+    fetchMovies(event.target.closest('.card').dataset.id)
+      .then(({ data, genreList }) => {
+        renderModal(data, genreList);
+      })
+      .catch(error => console.log(error));
     const modal = document.getElementById('modal-film');
     if (modal) {
       modal.classList.remove('is-hidden');
@@ -130,32 +135,142 @@ movieList.addEventListener('click', event => {
   }
 });
 
-// Funkcja disableScroll
-movieList.addEventListener('click', disableScroll);
-function disableScroll() {
-  document.body.classList.add('modal-film__stop-scrolling');
+// Funkcja wypełniania modala treścią
+const renderModal = (data, genreList) => {
+  if (!data.poster_path) {
+    data.poster_path = placeholder;
+  } else {
+    data.poster_path = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
+  }
+  if (!data.release_date) {
+    data.release_year = 'No info';
+  } else {
+    data.release_year = data.release_date.toString().slice(0, 4);
+  }
+  if (data.genres.length === 0) {
+    data.genres = 'No info';
+  } else {
+    data.genres = data.genres.map(e => e.name).join(', ');
+  }
+  const modalContent = `<div class="film-info">
+      <img src="${data.poster_path}"  alt="${data.title}" class="film-info__poster" />
+      <div class="film-info__wrapper">
+        <h1 class="film-info__title">${data.title} (${data.release_year})</h1>
+        <table class="film-info__table">
+          <tbody>
+            <tr>
+              <td class="film-info__stats">Vote / Votes</td>
+              <td><span class="film-info__vote">${data.vote_average}</span> / ${data.vote_count}</td>
+            </tr>
+            <tr>
+              <td class="film-info__stats">Popularity</td>
+              <td>${data.popularity}</td>
+            </tr>
+            <tr>
+              <td class="film-info__stats">Original Title</td>
+              <td class="film-info__orign-title">${data.original_title}</td>
+            </tr>
+            <tr>
+              <td class="film-info__stats">Genre</td>
+              <td>${data.genres}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="film-info__about">About</p>
+        <p class="film-info__descr">
+          ${data.overview}
+        </p>
+      </div>
+    </div>`;
+  const modalCard = document.querySelector('.modal-film__card');
+  modalCard.innerHTML = modalContent;
+  const closeIcon = document.querySelector('.modal-film__icon-close');
+  closeIcon.addEventListener('click', filmModalClose);
+};
+
+// Funkcja enableScroll
+function enableScroll() {
+  const closeIcon = document.querySelector('.modal-film__icon-close');
+  closeIcon.removeEventListener('click', filmModalClose);
+  document.body.classList.remove('modal-film__stop-scrolling');
 }
 
 // Funkcja zamykająca modal
 function filmModalClose() {
   const modal = document.getElementById('modal-film');
+  const closeIcon = document.querySelector('.modal-film__icon-close');
+  document.body.classList.remove('modal-film__stop-scrolling');
+  enableScroll();
   if (modal) {
     modal.classList.add('is-hidden');
   }
 }
 
-// Obsługa kliknięcia na ikonkę zamknięcia
-const closeIcon = document.querySelector('.modal-film__icon-close');
-if (closeIcon) {
-  closeIcon.addEventListener('click', filmModalClose);
-}
-// Funkcja enableScroll
-closeIcon.addEventListener('click', enableScroll);
-function enableScroll() {
-  document.body.classList.remove('modal-film__stop-scrolling');
-}
-
 // Koniec obsługi otwarcia i zamknięcia modala
+
+// Początek obługi localStorage
+
+const btnWatched = document.getElementsByClassName('.modal-film__btns-addToWatched');
+const btnQueue = document.getElementsByClassName('.modal-film__btns-addToQueue');
+
+window.addEventListener('DOMContentLoaded', event => {
+  btnWatched.addEventListener('click', () => {
+    console.log('btnWatched');
+  });
+});
+
+window.addEventListener('DOMContentLoaded', event => {
+  btnQueue.addEventListener('click', () => {
+    console.log('btnQueue');
+  });
+});
+
+// function addToLocalStorage(movieId, listType) {
+//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+//   if (!moviesList.includes(movieId)) {
+//     moviesList.push(movieId);
+//     localStorage.setItem(listType, JSON.stringify(moviesList));
+//   }
+// }
+
+// // Funkcja usuwająca film z localStorage po listType
+
+// function removeFromLocalStorage(movieId, listType) {
+//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+//   const updatedList = moviesList.filter(id => id !== movieId);
+//   localStorage.setItem(listType, JSON.stringify(updatedList));
+// }
+
+// function checkMovieInLocalStorage(movieId, listType) {
+//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+//   return moviesList.includes(movieId);
+// }
+
+// window.addEventListener('DOMContentLoaded', event => {
+//   // Oczekiwanie na załadowanie struktury DOM
+//   btnWatched.addEventListener('click', () => {
+//     const watchedMoviesArray = JSON.parse(localStorage.getItem('watched'));
+//     if (watchedMoviesArray) {
+//       loadMovies(watchedMoviesArray);
+//     } else {
+//       Notiflix.Notify.failure('brak obejrzanych filmów');
+//     }
+//   });
+
+//   btnQueue.addEventListener('click', () => {
+//     const queueMoviesArray = JSON.parse(localStorage.getItem('queue'));
+//     if (queueMoviesArray) {
+//       loadMovies(queueMoviesArray);
+//     } else {
+//       Notiflix.Notify.failure('brak filmów do obejrzenia');
+//     }
+//   });
+// });
+
+// addToLocalStorage(926393);
+// console.log(localStorage);
+
+// Konice obsługi localStorage
 
 const getGenres = (data, genreList) => {
   const filtered = genreList.filter(e => data.includes(e.id));
