@@ -6,6 +6,10 @@ Notiflix.Notify.init({
   position: 'center-top',
   timeout: 1000,
 });
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import { AUTH_KEY } from './js/tmdb_api';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
