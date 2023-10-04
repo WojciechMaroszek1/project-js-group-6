@@ -1,9 +1,10 @@
 import placeholder from '/src/images/nothing_to_see.jpg';
 import { showLoader, hideLoader } from '../loader';
+
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
 
-const movieList = document.querySelector('.movies');
+export const movieList = document.querySelector('.movies');
 const pagination = document.querySelector('.pagination__numbers');
 const btnPrev = document.querySelector('#button-prev');
 const btnNext = document.querySelector('#button-next');
@@ -63,7 +64,7 @@ export const renderMovies = (data, genreList) => {
       } else {
         e.genres = getGenres(e.genre_ids, genreList);
       }
-      return `<li class="card" id="toogle-film-card">
+      return `<li class="card" id="toogle-film-card" data-modal-open>
       <button type="button" class="card__link">Watch trailer</button>
       <img
         src="${e.poster_path}"
@@ -84,6 +85,37 @@ export const renderMovies = (data, genreList) => {
     cardTitle.forEach(e => e.classList.add('card__title--dark'));
   }
 };
+
+// Tutaj zaczyna się obsług otwarcia i zamknięcia modala po kliknięciu na kartę filmu
+
+//Event listener i funkcja otwierająca modal
+movieList.addEventListener('click', event => {
+  if (event.target.closest('.card')) {
+    const modalId = event.target.closest('.card').getAttribute('data-modal-target');
+
+    const modal = document.getElementById('modal-film');
+
+    if (modal) {
+      modal.classList.remove('is-hidden');
+    }
+  }
+});
+
+// Funkcja zamykająca modal
+function filmModalClose() {
+  const modal = document.getElementById('modal-film');
+  if (modal) {
+    modal.classList.add('is-hidden');
+  }
+}
+
+// Obsługa kliknięcia na ikonkę zamknięcia
+const closeIcon = document.querySelector('.modal-film__icon-close');
+if (closeIcon) {
+  closeIcon.addEventListener('click', filmModalClose);
+}
+
+// Koniec obsługi otwarcia i zamknięcia modala
 
 const getGenres = (data, genreList) => {
   const filtered = genreList.filter(e => data.includes(e.id));
