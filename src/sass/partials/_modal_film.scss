@@ -57,7 +57,7 @@
     padding: 48px 20px 40px 20px;
     @media screen and (min-width: $breakpoint-tablet) {
       flex-wrap: nowrap;
-      gap: 68px;
+      // gap: 68px;
       height: max-content;
       align-items: center;
       & > div:nth-child(1) {
@@ -68,10 +68,10 @@
       }
       & > div:nth-child(2) {
         @media screen and (min-width: $breakpoint-tablet) {
-          max-width: 353px;
+          // max-width: 353px;
         }
         @media screen and (min-width: $breakpoint-desktop) {
-          max-width: 375px;
+          // max-width: 375px;
         }
       }
     }
@@ -81,7 +81,15 @@
   }
 }
 
+.film-info__wrapper {
+  padding-top: 10px;
+}
+
 .film-info {
+  // parent {
+  //   width: 100%;
+  // }
+
   &__vote-original-title {
     width: 160px;
   }
@@ -260,6 +268,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 20px 20px;
 
   &-addToWatched,
   &-addToQueue {
