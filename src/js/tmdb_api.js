@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 
 const AUTH_KEY =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDVlODZlMjc2NGU5ODNhODNiMzhlOWM3ZTczOTc1MSIsInN1YiI6IjY1MTFjOTI0YTkxMTdmMDBlMTkzNDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GsP1_BpjRsEtLOVsHhzyIZ6UsRr54tXlsvMn6Ob4lmQ';
-
+const baseUrl = 'https://api.themoviedb.org/3';
 export const movieList = document.querySelector('.movies');
 const pagination = document.querySelector('.pagination__numbers');
 const btnPrev = document.querySelector('#button-prev');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const fetchMovies = async query => {
   showLoader();
   try {
-    const baseUrl = 'https://api.themoviedb.org/3';
+    // const baseUrl = 'https://api.themoviedb.org/3';
     const queries = query
       ? [`movie/${query}`, 'genre/movie/list']
       : currentSearch === 'trending'
@@ -207,25 +207,51 @@ function filmModalClose() {
   }
 }
 
+const modalBackdrop = document.querySelector('.backdrop');
+document.body.addEventListener('click', function (event) {
+  if (event.target === modalBackdrop) {
+    filmModalClose();
+  }
+});
 // Koniec obsługi otwarcia i zamknięcia modala
 
 // Początek obługi localStorage
+
+async function fetchMovieById(movieId) {
+  try {
+    const response = await fetch(`${baseUrl}/movie/${movieId}`, options);
+    const responseObject = await response.json();
+    return responseObject;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+// fetchMovieById('678512');
+
+// const movieData = await fetchMovieById(movieId);
+// console.log(movieData);
 
 const btnWatched = document.querySelector('.modal-film__btns-addToWatched');
 const btnQueue = document.querySelector('.modal-film__btns-addToQueue');
 
 window.addEventListener('DOMContentLoaded', event => {
   btnWatched.addEventListener('click', () => {
+    btnWatched.textContent = 'Remove from watched';
+
+    // getMovieID();
     console.log('btnWatched');
   });
 });
 
 window.addEventListener('DOMContentLoaded', event => {
   btnQueue.addEventListener('click', () => {
+    btnQueue.textContent = 'Remove from watched';
     console.log('btnQueue');
   });
 });
 
+// console.log(localStorage);
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // Konice obsługi localStorage
