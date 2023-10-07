@@ -190,10 +190,73 @@ const renderModal = (data, genreList) => {
       </div>
       
     </div>`;
+  // Wyłuskane ID filmu
+  const movieId = data.id;
+  console.log(movieId);
+  // Koniec łuskania
   const modalCard = document.querySelector('.modal-film__card');
   modalCard.innerHTML = modalContent;
   const closeIcon = document.querySelector('.modal-film__icon-close');
   closeIcon.addEventListener('click', filmModalClose);
+
+  // Funkcje obsługujące localStorage
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  function addToLocalStorage(movieId, listType) {
+    let moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+    if (!moviesList.includes(movieId)) {
+      moviesList.push(movieId);
+      localStorage.setItem(listType, JSON.stringify(moviesList));
+    }
+  }
+
+  // Funkcja usuwająca film z localStorage
+  function removeFromLocalStorage(movieId, listType) {
+    let moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+    let updatedList = moviesList.filter(id => id !== movieId);
+    localStorage.setItem(listType, JSON.stringify(updatedList));
+  }
+
+  function checkMovieInLocalStorage(movieId, listType) {
+    let moviesList = JSON.parse(localStorage.getItem(listType)) || [];
+    return moviesList.includes(movieId);
+  }
+
+  // EventListenery na guzikach watched i queue, zapisujące id w localStorage
+  const watchedButton = document.querySelector('.modal-film__btns-addToWatched');
+  const queueButton = document.querySelector('.modal-film__btns-addToQueue');
+
+  let isMovieInWatched;
+  let isMovieInQueue;
+
+  // Sprawdzenie, czy dany film znajduje się w localStorage
+  isMovieInWatched = checkMovieInLocalStorage(movieId, 'watched');
+  isMovieInQueue = checkMovieInLocalStorage(movieId, 'queue');
+
+  watchedButton.textContent = isMovieInWatched ? 'ON THE WATCHED ✓' : 'Add to watched';
+  queueButton.textContent = isMovieInQueue ? 'ON THE QUEUE ✓' : 'Add to queue';
+
+  watchedButton.addEventListener('click', function () {
+    if (isMovieInWatched) {
+      removeFromLocalStorage(movieId, 'watched');
+    } else {
+      addToLocalStorage(movieId, 'watched');
+    }
+
+    isMovieInWatched = !isMovieInWatched;
+    watchedButton.textContent = isMovieInWatched ? 'ADDED ✓' : 'Add to watched';
+  });
+
+  queueButton.addEventListener('click', function () {
+    if (isMovieInQueue) {
+      removeFromLocalStorage(movieId, 'queue');
+    } else {
+      addToLocalStorage(movieId, 'queue');
+    }
+
+    isMovieInQueue = !isMovieInQueue;
+    queueButton.textContent = isMovieInQueue ? 'ADDED ✓' : 'Add to queue';
+  });
 };
 
 // Funkcja enableScroll
@@ -222,7 +285,7 @@ document.body.addEventListener('click', function (event) {
 });
 // Koniec obsługi otwarcia i zamknięcia modala
 
-// Początek obługi localStorage
+// Początek obługi LIBRARY
 
 async function fetchMovieById(movieId) {
   try {
@@ -235,28 +298,6 @@ async function fetchMovieById(movieId) {
   }
 }
 // fetchMovieById('678512');
-
-// const movieData = await fetchMovieById(movieId);
-// console.log(movieData);
-
-const btnWatched = document.querySelector('.modal-film__btns-addToWatched');
-const btnQueue = document.querySelector('.modal-film__btns-addToQueue');
-
-window.addEventListener('DOMContentLoaded', event => {
-  btnWatched.addEventListener('click', () => {
-    btnWatched.textContent = 'Remove from watched';
-
-    // getMovieID();
-    console.log('btnWatched');
-  });
-});
-
-window.addEventListener('DOMContentLoaded', event => {
-  btnQueue.addEventListener('click', () => {
-    btnQueue.textContent = 'Remove from watched';
-    console.log('btnQueue');
-  });
-});
 
 // console.log(localStorage);
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
