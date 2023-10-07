@@ -181,7 +181,14 @@ const renderModal = (data, genreList) => {
         <p class="film-info__descr">
           ${data.overview}
         </p>
+        <div class="modal-film__btns">
+      <button type="button" class="modal-film__btns-addToWatched add-watched">
+        Add to watched
+      </button>
+      <button type="button" class="modal-film__btns-addToQueue add-queue">Add to queue</button>
+    </div>
       </div>
+      
     </div>`;
   const modalCard = document.querySelector('.modal-film__card');
   modalCard.innerHTML = modalContent;

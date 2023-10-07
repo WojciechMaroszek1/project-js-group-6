@@ -52,18 +52,15 @@
   }
   @media screen and (min-width: $breakpoint-desktop) {
     padding: 40px 16px 40px 16px;
-
     width: 806px;
   }
 
   &__card {
-    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
 
     @media screen and (min-width: $breakpoint-tablet) {
-      flex-wrap: nowrap;
-      flex-direction: row;
+      flex-direction: column;
       height: max-content;
       align-items: center;
     }
@@ -74,14 +71,24 @@
 }
 
 .film-info {
-  width: 100vw;
   @media screen and (min-width: $breakpoint-tablet) {
+    max-width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 68px;
   }
   @media screen and (min-width: $breakpoint-desktop) {
     gap: 16px;
+  }
+  &__wrapper {
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      width: 391px;
+    }
   }
 
   &__vote-original-title {
@@ -96,10 +103,11 @@
     background-color: rgb(140, 140, 140);
     @media screen and (min-width: $breakpoint-tablet) {
       width: 264px;
-      height: auto;
+      height: 373, 55px;
     }
     @media screen and (min-width: $breakpoint-desktop) {
       width: 375px;
+      height: 478px;
     }
   }
 
@@ -296,14 +304,12 @@
     }
   }
   @media screen and (min-width: $breakpoint-tablet) {
-    gap: 20px;
-    justify-content: flex-end;
-    align-self: flex-end;
-    width: 337px;
+    gap: 15px;
   }
   @media screen and (min-width: $breakpoint-desktop) {
+    justify-content: left;
+    padding-left: 8px;
     gap: 15px;
-    width: 397px;
     order: 2;
   }
 }
