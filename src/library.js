@@ -1,2 +1,4 @@
 import { showLoader, hideLoader } from './loader';
-import './js/tmdb_api';
+import './sass/main.scss';
+import './js/watched-films';
+import './js/dark_mode';

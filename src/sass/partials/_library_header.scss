@@ -111,17 +111,17 @@
     }
   }
   // DODAĆ STYLE TO JS
-  // &__button-active {
-  //   color: #ffffff;
-  //   box-shadow: 0px 8px 43px 0px #ff6b0199;
-  //   background-color: #ff6b01;
-  //   border-radius: 5px;
-  //   font-size: 12px;
-  //   padding: 14px 36px;
-  //   border: none;
-  //   width: 130px;
-  //   cursor: pointer;
-  // }
+  &__button-active {
+    color: #ffffff;
+    box-shadow: 0px 8px 43px 0px #ff6b0199;
+    background-color: #ff6b01;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 14px 36px;
+    border: none;
+    width: 130px;
+    cursor: pointer;
+  }
 }
 
 //tablet

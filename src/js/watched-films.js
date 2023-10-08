@@ -1,51 +1,139 @@
-// function addToLocalStorage(movieId, listType) {
-//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
-//   if (!moviesList.includes(movieId)) {
-//     moviesList.push(movieId);
-//     localStorage.setItem(listType, JSON.stringify(moviesList));
-//   }
-// }
+import Notiflix from 'notiflix';
+import { renderModal } from './tmdb_api';
+import { renderMovies } from './tmdb_api';
+import { fetchMovies } from './tmdb_api';
+import { options } from './tmdb_api';
 
-// // Funkcja usuwająca film z localStorage
-// function removeFromLocalStorage(movieId, listType) {
-//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
-//   const updatedList = moviesList.filter(id => id !== movieId);
-//   localStorage.setItem(listType, JSON.stringify(updatedList));
-// }
+const baseUrl = 'https://api.themoviedb.org/3';
+// Początek obługi LIBRARY
 
-// function checkMovieInLocalStorage(movieId, listType) {
-//   const moviesList = JSON.parse(localStorage.getItem(listType)) || [];
-//   return moviesList.includes(movieId);
-// }
+async function fetchMovieById(movieId) {
+  try {
+    const response = await fetch(`${baseUrl}/movie/${movieId}`, options);
+    const responseObject = await response.json();
+    return responseObject;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
 
-// let isMovieInWatched;
-// let isMovieInQueue;
+const libraryGallery = document.querySelector('.library-gallery');
 
-// // Sprawdzenie, czy dany film znajduje się w localStorage
-// isMovieInWatched = checkMovieInLocalStorage(movieData.id, 'watched');
-// isMovieInQueue = checkMovieInLocalStorage(movieData.id, 'queue');
+// Początek obsługi przycisków
+const btnWatched = document.getElementById('btn-watched');
+const btnQueue = document.getElementById('btn-queue');
 
-// watchedButton.textContent = isMovieInWatched ? 'ON THE WATCHED ✓' : 'Add to watched';
-// queueButton.textContent = isMovieInQueue ? 'ON THE QUEUE ✓' : 'Add to queue';
+document.addEventListener('DOMContentLoaded', function () {
+  btnWatched.addEventListener('click', () => {
+    // console.log('header_WATCHED');
+    const watchedMoviesArray = JSON.parse(localStorage.getItem('watched'));
+    if (watchedMoviesArray) {
+      loadMovies(watchedMoviesArray);
+      btnWatched.classList.add('header-library__button-active');
+      btnQueue.classList.remove('header-library__button-active');
+    } else {
+      Notiflix.Notify.failure('brak zapisanych filmów na tablicy Watched');
+      btnWatched.classList.add('header-library__button-active');
+      btnQueue.classList.remove('header-library__button-active');
+    }
+  });
 
-// watchedButton.addEventListener('click', function () {
-//   if (isMovieInWatched) {
-//     removeFromLocalStorage(movieData.id, 'watched');
-//   } else {
-//     addToLocalStorage(movieData.id, 'watched');
-//   }
+  btnQueue.addEventListener('click', () => {
+    // console.log('header_QUEUE');
+    const queueMoviesArray = JSON.parse(localStorage.getItem('queue'));
+    if (queueMoviesArray) {
+      loadMovies(queueMoviesArray);
+      btnQueue.classList.add('header-library__button-active');
+      btnWatched.classList.remove('header-library__button-active');
+    } else {
+      Notiflix.Notify.failure('brak zapisanych filmów na tablicy Queue');
+      btnQueue.classList.add('header-library__button-active');
+      btnWatched.classList.remove('header-library__button-active');
+    }
+  });
 
-//   isMovieInWatched = !isMovieInWatched;
-//   watchedButton.textContent = isMovieInWatched ? 'ADDED ✓' : 'Add to watched';
-// });
+  // Koniec obsługi przycisków
 
-// queueButton.addEventListener('click', function () {
-//   if (isMovieInQueue) {
-//     removeFromLocalStorage(movieData.id, 'queue');
-//   } else {
-//     addToLocalStorage(movieData.id, 'queue');
-//   }
+  function addModalListenerFunction() {
+    document.addEventListener('DOMContentLoaded', function () {
+      //Event listener i funkcja otwierająca modal
+      movieList.addEventListener('click', event => {
+        if (event.target.closest('.movie-card')) {
+          document.body.classList.add('modal-film__stop-scrolling');
+          const modalId = event.target.closest('.movie-card').getAttribute('data-modal-target');
+          fetchMovies(event.target.closest('.movie-card').dataset.id)
+            .then(({ data, genreList }) => {
+              renderModal(data, genreList);
+            })
+            .catch(error => console.log(error));
+          const modal = document.getElementById('modal-film');
+          if (modal) {
+            modal.classList.remove('is-hidden');
+          }
+        }
+      });
+    });
+  }
 
-//   isMovieInQueue = !isMovieInQueue;
-//   queueButton.textContent = isMovieInQueue ? 'ADDED ✓' : 'Add to queue';
-// });
+  async function loadMovies(movieIds) {
+    try {
+      const results = [];
+      for (const movieId of movieIds) {
+        const movieData = await fetchMovieById(movieId);
+        results.push(movieData);
+      }
+      renderLibraryCards(results);
+    } catch (error) {
+      console.log('Błąd podczas pobierania danych filmów:', error);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const watchedMoviesArray = JSON.parse(localStorage.getItem('watched'));
+
+    try {
+      if (watchedMoviesArray) {
+        const results = [];
+        for (const movieId of watchedMoviesArray) {
+          const movieData = await fetchMovieById(movieId);
+          results.push(movieData);
+        }
+        renderLibraryCards(results);
+      } else {
+        console.log('brak zapisanych filmów na tablicy Watched Movies');
+      }
+    } catch (error) {
+      console.log('Błąd podczas pobierania danych filmów:', error);
+    }
+  });
+
+  function renderLibraryCards(movies) {
+    const markup = movies
+      .map(({ poster_path, title, name, id, release_date, first_air_date, vote_average }) => {
+        const movieTitle = title ? title : name;
+        const vote = vote_average.toFixed(1);
+        const releaseDate = (release_date || first_air_date || '').slice(0, 4);
+        const moviePoster =
+          poster_path != null ? `https://image.tmdb.org/t/p/w500${poster_path}` : noMoviePoster;
+        return `
+  
+            <li class="movie-card" data-id="${id}" data-type="movie">
+              <div class="movie-card__box">
+                <img class="movie-card__img" src="${moviePoster}" data-img="${moviePoster}" loading="lazy" alt="${movieTitle}" />
+              </div>
+              <h2 class="movie-card__heading">${movieTitle}</h2>
+  
+              <span class="movie-card__caption">  ${releaseDate} <span class="library-vote"> ${vote} </span></span>
+              </li>
+            `;
+      })
+      .join('');
+
+    libraryGallery.innerHTML = markup;
+    addModalListenerFunction();
+  }
+});
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Konice obsługi LIBRARY

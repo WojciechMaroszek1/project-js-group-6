@@ -14,7 +14,7 @@ let currentPage = 1;
 let totalPages = 1;
 let currentSearch = 'trending';
 
-const options = {
+export const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-const fetchMovies = async query => {
+export const fetchMovies = async query => {
   showLoader();
   try {
     // const baseUrl = 'https://api.themoviedb.org/3';
@@ -119,25 +119,27 @@ export const renderMovies = (data, genreList) => {
 
 // Tutaj zaczyna się obsług otwarcia i zamknięcia modala po kliknięciu na kartę filmu
 
-//Event listener i funkcja otwierająca modal
-movieList.addEventListener('click', event => {
-  if (event.target.closest('.card')) {
-    document.body.classList.add('modal-film__stop-scrolling');
-    const modalId = event.target.closest('.card').getAttribute('data-modal-target');
-    fetchMovies(event.target.closest('.card').dataset.id)
-      .then(({ data, genreList }) => {
-        renderModal(data, genreList);
-      })
-      .catch(error => console.log(error));
-    const modal = document.getElementById('modal-film');
-    if (modal) {
-      modal.classList.remove('is-hidden');
+document.addEventListener('DOMContentLoaded', function () {
+  //Event listener i funkcja otwierająca modal
+  movieList.addEventListener('click', event => {
+    if (event.target.closest('.card')) {
+      document.body.classList.add('modal-film__stop-scrolling');
+      const modalId = event.target.closest('.card').getAttribute('data-modal-target');
+      fetchMovies(event.target.closest('.card').dataset.id)
+        .then(({ data, genreList }) => {
+          renderModal(data, genreList);
+        })
+        .catch(error => console.log(error));
+      const modal = document.getElementById('modal-film');
+      if (modal) {
+        modal.classList.remove('is-hidden');
+      }
     }
-  }
+  });
 });
 
 // Funkcja wypełniania modala treścią
-const renderModal = (data, genreList) => {
+export const renderModal = (data, genreList) => {
   if (!data.poster_path) {
     data.poster_path = placeholder;
   } else {
@@ -192,7 +194,6 @@ const renderModal = (data, genreList) => {
     </div>`;
   // Wyłuskane ID filmu
   const movieId = data.id;
-  console.log(movieId);
   // Koniec łuskania
   const modalCard = document.querySelector('.modal-film__card');
   modalCard.innerHTML = modalContent;
@@ -284,25 +285,6 @@ document.body.addEventListener('click', function (event) {
   }
 });
 // Koniec obsługi otwarcia i zamknięcia modala
-
-// Początek obługi LIBRARY
-
-async function fetchMovieById(movieId) {
-  try {
-    const response = await fetch(`${baseUrl}/movie/${movieId}`, options);
-    const responseObject = await response.json();
-    return responseObject;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-// fetchMovieById('678512');
-
-// console.log(localStorage);
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// Konice obsługi localStorage
 
 const getGenres = (data, genreList) => {
   const filtered = genreList.filter(e => data.includes(e.id));
