@@ -35,11 +35,13 @@ if (darkMode === 'enabled') {
   enableDarkMode();
 }
 
-toggle.addEventListener('click', () => {
-  darkMode = localStorage.getItem('darkMode');
-  if (darkMode !== 'enabled') {
-    enableDarkMode();
-  } else {
-    disableDarkMode();
-  }
+document.addEventListener('DOMContentLoaded', function () {
+  toggle.addEventListener('click', () => {
+    darkMode = localStorage.getItem('darkMode');
+    if (darkMode !== 'enabled') {
+      enableDarkMode();
+    } else {
+      disableDarkMode();
+    }
+  });
 });

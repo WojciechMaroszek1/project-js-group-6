@@ -1,1 +1,33 @@
-@import './general'
+@import './general';
+
+.library-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+@media screen and (min-width: 768px) {
+  .library-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .library-gallery {
+    gap: 16px;
+  }
+}
+.movie-gallery__container {
+  margin-bottom: 60px;
+}
+.library-vote {
+  color: #fff;
+  background-color: #ff6b01;
+  border-radius: 5px;
+  padding: 1px 8px;
+}
+
+.card {
+  list-style-type: none;
+}
